@@ -9,6 +9,8 @@ import Hero from '../components/Hero.js';
 import HeroSearch from '../components/HeroSearch.js';
 import CenterSection from '../components/CenterSection.js';
 import HikesNearYouList from '../components/HikesNearYouList.js';
+import RecommendedHikesList from '../components/RecommendedHikesList.js';
+import Map from '../components/Map.js';
 import { 
   showText, 
 } from '../services/actions.js';
@@ -38,6 +40,8 @@ class App extends Component {
         </Hero>
         <CenterSection>
           <HikesNearYouList />
+          <Map />
+          <RecommendedHikesList />
         </CenterSection>
         <h1 className="bg-white blue"
           onClick={this.props.showText}
