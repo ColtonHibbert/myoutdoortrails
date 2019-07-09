@@ -1,11 +1,11 @@
 import React from 'react';
 
-export const Template = () => {
+export const Map = () => {
     return (
         <div>
-        template
+        map
         </div>
     )
 }
 
-export default Template;
+export default Map;
