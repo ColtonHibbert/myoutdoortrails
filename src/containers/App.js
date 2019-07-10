@@ -11,6 +11,10 @@ import CenterSection from '../components/CenterSection.js';
 import HikesNearYouList from '../components/HikesNearYouList.js';
 import RecommendedHikesList from '../components/RecommendedHikesList.js';
 import Map from '../components/Map.js';
+import LowerMainPageContent from '../components/LowerMainPageContent.js';
+import GearReviews from '../components/GearReviews.js';
+import MainPageArticles from '../components/MainPageArticles.js';
+import Footer from '../components/Footer.js';
 import { 
   showText, 
 } from '../services/actions.js';
@@ -41,11 +45,17 @@ class App extends Component {
         <CenterSection>
           <HikesNearYouList />
           <Map />
-          <RecommendedHikesList />
         </CenterSection>
+        <RecommendedHikesList />
+        <LowerMainPageContent>
+          <MainPageArticles />
+          <GearReviews />
+        </LowerMainPageContent>
         <h1 className="bg-white blue"
           onClick={this.props.showText}
         >{this.props.text}</h1>
+        <Footer>
+        </Footer>
       </div>
   );
   }
