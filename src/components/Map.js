@@ -1,9 +1,11 @@
 import React from 'react';
 
-export const Map = () => {
+export const Map = (props) => {
     return (
-        <div>
-        map
+        <div className="flex w-100">
+            <div  className="flex w-100 vh-50 bg-white">
+                map
+            </div>
         </div>
     )
 }

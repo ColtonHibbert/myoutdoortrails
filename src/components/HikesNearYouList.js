@@ -2,13 +2,13 @@ import React from 'react';
 
 export const HikesNearYouList = () => {
     return (
-        <div>
-            <ul>
-                <li>list item
+        <div className="w-100">
+            <ul className="w-100 ma0 pa0 list ">
+                <li className="w-100 h4 ma0 pa0 ba bg-white">list item
                 </li>
-                <li>list item
+                <li className="w-100 h4 ma0 pa0 ba bg-white">list item
                 </li>
-                <li>list item
+                <li className="w-100 h4 ma0 pa0 ba bg-white">list item
                 </li>
             </ul>
         </div>
