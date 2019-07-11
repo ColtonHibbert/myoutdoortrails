@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Navigation = () => {
+export const Navigation = ({ displaySignUpModalAction }) => {
     return (
         <div>
             <nav class="db dt-l w-100 border-box pa3 ph5-l">
@@ -15,7 +15,9 @@ export const Navigation = () => {
                     <a class="link dim dark-gray f6 f5-l dib mr3 mr4-l" href="#" title="Featured">Featured</a>
                     <a class="link dim dark-gray f6 f5-l dib mr3 mr4-l" href="#" title="Forum">Forum</a>
                     <a class="link dim dark-gray f6 f5-l dib mr3 mr4-l" href="#" title="Sign in">Sign in</a>
-                    <a class="link dim dark-gray f6 f5-l dib" href="#" title="Sign up">Sign Up</a>
+                    <a class="link dim dark-gray f6 f5-l dib" href="#" title="Sign up"
+                        onClick={displaySignUpModalAction}
+                    >Sign Up</a>
                 </div>
             </nav>
         </div>
