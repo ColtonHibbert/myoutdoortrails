@@ -43,10 +43,11 @@ class App extends Component {
   render() {
     return (
       <div 
-        className="min-vh-100 bg-green"
+      className={`min-vh-100 bg-green {store.getState().displaySignUpModal ? 'flex justify-center items-center' : ''}`}
       >
          {
-           store.getState().displaySignUpModal ?  <SignUp /> : ''
+           store.getState().displaySignUpModal ?  
+           <SignUp /> : ''
          }
         <Navigation 
           displaySignUpModalAction={this.props.displaySignUpModalAction}
