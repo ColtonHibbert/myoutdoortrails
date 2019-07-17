@@ -20,6 +20,7 @@ import {
   showText, 
   displaySignUpModalAction,
   displaySignInModalAction,
+  submitSearchFieldAction,
 } from '../services/actions.js';
 
 const mapStateToProps = (state) => {
@@ -27,6 +28,7 @@ const mapStateToProps = (state) => {
     text: state.text,
     displaySignUpModal: state.displaySignUpModal,
     displaySignInModal: state.displaySignInModal,
+    searchFieldValue: state.searchFieldValue,
   }
 }
 
@@ -36,14 +38,15 @@ const mapDispatchToProps = (dispatch) => {
     showText: () => dispatch(showText()),
     displaySignUpModalAction: () => dispatch(displaySignUpModalAction()),
     displaySignInModalAction: () => dispatch(displaySignInModalAction()),
+    submitSearchFieldAction: (event) => dispatch(submitSearchFieldAction(event)),
   }
 }
 
 class App extends Component {
   render() {
-    return (
+    return ( 
       <div 
-      className={`min-vh-100 bg-green {store.getState().displaySignUpModal ? 'flex justify-center items-center' : ''}`}
+      className={!store.getState().displaySignUpModal ? 'min-vh-100 bg-green relative' : 'min-vh-100 bg-green relative'}
       >
          {
            store.getState().displaySignUpModal ?  
@@ -53,7 +56,9 @@ class App extends Component {
           displaySignUpModalAction={this.props.displaySignUpModalAction}
         />
         <Hero>
-          <HeroSearch></HeroSearch>
+          <HeroSearch
+            submitSearchFieldAction={this.props.submitSearchFieldAction}
+          ></HeroSearch>
         </Hero>
         <CenterSection>
           <HikesNearYouList />

@@ -5,6 +5,7 @@ import {
     SHOW_TEXT,
     DISPLAY_SIGN_UP_MODAL,
     DISPLAY_SIGN_IN_MODAL,
+    SUBMIT_SEARCH_FIELD,
 } from './constants.js';
 
 export const showText = () => {
@@ -28,3 +29,11 @@ export const displaySignInModalAction = () => {
         displaySignInModalPayload: !store.getState().displaySignInModal,
     }
 }
+
+export const submitSearchFieldAction = (event) => {
+    return {
+        type: SUBMIT_SEARCH_FIELD,
+        submitSearchFieldActionPayload: event.target.value
+    }
+}
+
