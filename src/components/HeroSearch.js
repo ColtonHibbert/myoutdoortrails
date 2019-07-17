@@ -1,6 +1,7 @@
 import React from 'react';
+import { submitSearchFieldAction } from '../services/actions';
 
-export const HeroSearch = (props) => {
+export const HeroSearch = ({submitSearchFieldAction}) => {
     return (
         <div>
             <h2>Hike your next great adventure</h2>
@@ -9,6 +10,7 @@ export const HeroSearch = (props) => {
                 <input 
                 className="h2 w5 bg-white"
                 type="text"
+                onChange={submitSearchFieldAction}
                 >
                 </input>
                 <button>Search</button>
