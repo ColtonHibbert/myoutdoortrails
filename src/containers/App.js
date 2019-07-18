@@ -21,6 +21,7 @@ import {
   displaySignUpModalAction,
   displaySignInModalAction,
   submitSearchFieldAction,
+  sendSearchFieldAction,
 } from '../services/actions.js';
 
 const mapStateToProps = (state) => {
@@ -58,6 +59,7 @@ class App extends Component {
         <Hero>
           <HeroSearch
             submitSearchFieldAction={this.props.submitSearchFieldAction}
+            sendSearchFieldAction={sendSearchFieldAction}
           ></HeroSearch>
         </Hero>
         <CenterSection>
