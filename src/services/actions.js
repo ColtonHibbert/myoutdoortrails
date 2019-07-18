@@ -37,3 +37,14 @@ export const submitSearchFieldAction = (event) => {
     }
 }
 
+export const sendSearchFieldAction = () => {
+    fetch('http://localhost:3001/searchfield', {
+        method: 'post',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            searchField: store.getState().searchField
+        })
+    }).then(response => response.json())
+    .then(data => console.log(data))
+}
+

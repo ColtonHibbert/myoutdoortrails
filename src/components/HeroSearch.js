@@ -1,7 +1,6 @@
 import React from 'react';
-import { submitSearchFieldAction } from '../services/actions';
 
-export const HeroSearch = ({submitSearchFieldAction}) => {
+export const HeroSearch = ({submitSearchFieldAction, sendSearchFieldAction }) => {
     return (
         <div>
             <h2>Hike your next great adventure</h2>
@@ -13,7 +12,9 @@ export const HeroSearch = ({submitSearchFieldAction}) => {
                 onChange={submitSearchFieldAction}
                 >
                 </input>
-                <button>Search</button>
+                <button
+                    onClick={sendSearchFieldAction}
+                >Search</button>
             </div>
         </div>
     )
