@@ -22,6 +22,7 @@ import {
   displaySignInModalAction,
   submitSearchFieldAction,
   sendSearchFieldAction,
+  submitEmailAction,
 } from '../services/actions.js';
 
 const mapStateToProps = (state) => {
@@ -29,7 +30,8 @@ const mapStateToProps = (state) => {
     text: state.text,
     displaySignUpModal: state.displaySignUpModal,
     displaySignInModal: state.displaySignInModal,
-    searchFieldValue: state.searchFieldValue,
+    searchField: state.searchField,
+    email: state.email,
   }
 }
 
@@ -40,6 +42,7 @@ const mapDispatchToProps = (dispatch) => {
     displaySignUpModalAction: () => dispatch(displaySignUpModalAction()),
     displaySignInModalAction: () => dispatch(displaySignInModalAction()),
     submitSearchFieldAction: (event) => dispatch(submitSearchFieldAction(event)),
+    submitEmailAction: (event) => dispatch(submitEmailAction(event)),
   }
 }
 
@@ -51,7 +54,10 @@ class App extends Component {
       >
          {
            store.getState().displaySignUpModal ?  
-           <SignUp /> : ''
+           <SignUp 
+           displaySignUpModalAction={this.props.displaySignUpModalAction}
+           submitEmailAction={this.props.submitEmailAction}
+           /> : ''
          }
         <Navigation 
           displaySignUpModalAction={this.props.displaySignUpModalAction}
