@@ -4,8 +4,9 @@ import { store } from '../index.js';
 import {
     SHOW_TEXT,
     DISPLAY_SIGN_UP_MODAL,
-    DISPLAY_SIGN_IN_MODAL,
+    DISPLAY_LOG_IN_MODAL,
     SUBMIT_SEARCH_FIELD,
+    SUBMIT_EMAIL,
 } from './constants.js';
 
 export const showText = () => {
@@ -25,8 +26,8 @@ export const displaySignUpModalAction = () => {
 
 export const displaySignInModalAction = () => {
     return {
-        type: DISPLAY_SIGN_IN_MODAL,
-        displaySignInModalPayload: !store.getState().displaySignInModal,
+        type: DISPLAY_LOG_IN_MODAL,
+        displayLogInModalPayload: !store.getState().displayLogInModal,
     }
 }
 
@@ -37,8 +38,17 @@ export const submitSearchFieldAction = (event) => {
     }
 }
 
+export const submitEmailAction = (event) => {
+    return {
+        type: SUBMIT_EMAIL,
+        submitEmailPayload: event.target.value
+    }
+}
+
+// http:localhost:3001/searchfield
+
 export const sendSearchFieldAction = () => {
-    fetch('http://localhost:3001/searchfield', {
+    fetch('https://desolate-bayou-16919.herokuapp.com/searchfield', {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
