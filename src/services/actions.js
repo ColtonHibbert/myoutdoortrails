@@ -7,6 +7,7 @@ import {
     DISPLAY_LOG_IN_MODAL,
     SUBMIT_SEARCH_FIELD,
     SUBMIT_EMAIL,
+    SUBMIT_CRYPTED_PASSWORD,
 } from './constants.js';
 
 export const showText = () => {
@@ -24,7 +25,7 @@ export const displaySignUpModalAction = () => {
 }
 
 
-export const displaySignInModalAction = () => {
+export const displayLogInModalAction = () => {
     return {
         type: DISPLAY_LOG_IN_MODAL,
         displayLogInModalPayload: !store.getState().displayLogInModal,
@@ -34,7 +35,7 @@ export const displaySignInModalAction = () => {
 export const submitSearchFieldAction = (event) => {
     return {
         type: SUBMIT_SEARCH_FIELD,
-        submitSearchFieldActionPayload: event.target.value
+        submitSearchFieldPayload: event.target.value
     }
 }
 
@@ -42,6 +43,13 @@ export const submitEmailAction = (event) => {
     return {
         type: SUBMIT_EMAIL,
         submitEmailPayload: event.target.value
+    }
+}
+
+export const submitCryptedPasswordAction = (event) => {
+    return {
+        type: SUBMIT_CRYPTED_PASSWORD,
+        submitCryptedPasswordPayload: event.target.value
     }
 }
 
@@ -58,3 +66,13 @@ export const sendSearchFieldAction = () => {
     .then(data => console.log(data))
 }
 
+export const sendSignUpAction = () => {
+    fetch('https://desolate-bayou-16919.herokuapp.com/signup', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            email: store.getState().email,
+            crypted_password: store.getState().cryptedPassword
+        })
+    })
+}

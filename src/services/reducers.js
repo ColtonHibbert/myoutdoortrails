@@ -5,7 +5,7 @@ import {
     DISPLAY_LOG_IN_MODAL,
     SUBMIT_SEARCH_FIELD,
     SUBMIT_EMAIL,
-
+    SUBMIT_CRYPTED_PASSWORD,
 } from './constants.js';
 
 
@@ -32,10 +32,13 @@ export const reducer = (state=initialState, action={}) => {
         return {...state, displayLogInModal: action.displayLogInModalPayload }
     }
     if(action.type === SUBMIT_SEARCH_FIELD) {
-        return {...state, searchField: action.submitSearchFieldActionPayload }
+        return {...state, searchField: action.submitSearchFieldPayload }
     }
     if(action.type === SUBMIT_EMAIL) {
         return {...state, email: action.submitEmailPayload}
+    }
+    if(action.type === SUBMIT_CRYPTED_PASSWORD) {
+        return {...state, cryptedPassword: action.submitCryptedPasswordPayload }
     }
     return state;
 }
