@@ -19,19 +19,22 @@ import Footer from '../components/Footer.js';
 import { 
   showText, 
   displaySignUpModalAction,
-  displaySignInModalAction,
+  displayLogInModalAction,
   submitSearchFieldAction,
   sendSearchFieldAction,
   submitEmailAction,
+  submitCryptedPasswordAction,
+  sendSignUpAction,
 } from '../services/actions.js';
 
 const mapStateToProps = (state) => {
   return {
     text: state.text,
     displaySignUpModal: state.displaySignUpModal,
-    displaySignInModal: state.displaySignInModal,
+    displayLogInModal: state.displayLogInModal,
     searchField: state.searchField,
     email: state.email,
+    cryptedPassword: state.cryptedPassword,
   }
 }
 
@@ -40,9 +43,10 @@ const mapDispatchToProps = (dispatch) => {
   return {
     showText: () => dispatch(showText()),
     displaySignUpModalAction: () => dispatch(displaySignUpModalAction()),
-    displaySignInModalAction: () => dispatch(displaySignInModalAction()),
+    displayLogInModalAction: () => dispatch(displayLogInModalAction()),
     submitSearchFieldAction: (event) => dispatch(submitSearchFieldAction(event)),
     submitEmailAction: (event) => dispatch(submitEmailAction(event)),
+    submitCryptedPasswordAction: (event) => dispatch(submitCryptedPasswordAction(event)),
   }
 }
 
@@ -57,6 +61,8 @@ class App extends Component {
            <SignUp 
            displaySignUpModalAction={this.props.displaySignUpModalAction}
            submitEmailAction={this.props.submitEmailAction}
+           submitCryptedPasswordAction={this.props.submitCryptedPasswordAction}
+           sendSignUpAction={sendSignUpAction}
            /> : ''
          }
         <Navigation 
