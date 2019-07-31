@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { store } from '../index.js';
 import Navigation from '../components/Navigation.js';
 import SignUp from '../components/SignUp.js';
+import LogIn from '../components/LogIn.js';
 import Hero from '../components/Hero.js';
 import HeroSearch from '../components/HeroSearch.js';
 import CenterSection from '../components/CenterSection.js';
@@ -25,6 +26,7 @@ import {
   submitEmailAction,
   submitCryptedPasswordAction,
   sendSignUpAction,
+  sendLogIn,
 } from '../services/actions.js';
 
 const mapStateToProps = (state) => {
@@ -64,10 +66,18 @@ class App extends Component {
            submitCryptedPasswordAction={this.props.submitCryptedPasswordAction}
            sendSignUpAction={sendSignUpAction}
            /> : ''
+          }
+          {
+           store.getState().displayLogInModal ?
+           <LogIn 
+           displayLogInModalAction={this.props.displayLogInModalAction}
+           sendLogIn={sendLogIn}
+           /> : ''
          }
         <Navigation 
           displaySignUpModalAction={this.props.displaySignUpModalAction}
-        />
+          displayLogInModalAction={this.props.displayLogInModalAction}
+          />
         <Hero>
           <HeroSearch
             submitSearchFieldAction={this.props.submitSearchFieldAction}

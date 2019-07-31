@@ -76,3 +76,14 @@ export const sendSignUpAction = () => {
         })
     })
 }
+
+export const sendLogIn = () => {
+    fetch('https://desolate-bayou-16919.herokuapp.com/login', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            email: store.getState().email,
+            crypted_password: store.getState().cryptedPassword
+        })
+    }).then(data => console.log(data.json()))
+}
