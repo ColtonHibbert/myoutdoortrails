@@ -6,6 +6,7 @@ import {
     SUBMIT_SEARCH_FIELD,
     SUBMIT_EMAIL,
     SUBMIT_CRYPTED_PASSWORD,
+    SUBMIT_NAME,
 } from './constants.js';
 
 
@@ -16,6 +17,7 @@ const initialState = {
     searchField: '',
     email: '',
     cryptedPassword: '',
+    name: '',
 }
 // if(action.type === ) {
 //     return {...state, : action.}
@@ -39,6 +41,9 @@ export const reducer = (state=initialState, action={}) => {
     }
     if(action.type === SUBMIT_CRYPTED_PASSWORD) {
         return {...state, cryptedPassword: action.submitCryptedPasswordPayload }
+    }
+    if(action.type === SUBMIT_NAME) {
+    return {...state, name: action.submitNamePayload }
     }
     return state;
 }
