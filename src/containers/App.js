@@ -25,6 +25,7 @@ import {
   sendSearchFieldAction,
   submitEmailAction,
   submitCryptedPasswordAction,
+  submitNameAction,
   sendSignUpAction,
   sendLogIn,
 } from '../services/actions.js';
@@ -37,6 +38,7 @@ const mapStateToProps = (state) => {
     searchField: state.searchField,
     email: state.email,
     cryptedPassword: state.cryptedPassword,
+    name: state.name,
   }
 }
 
@@ -49,6 +51,7 @@ const mapDispatchToProps = (dispatch) => {
     submitSearchFieldAction: (event) => dispatch(submitSearchFieldAction(event)),
     submitEmailAction: (event) => dispatch(submitEmailAction(event)),
     submitCryptedPasswordAction: (event) => dispatch(submitCryptedPasswordAction(event)),
+    submitNameAction: (event) => dispatch(submitNameAction(event)),
   }
 }
 
@@ -62,8 +65,9 @@ class App extends Component {
            store.getState().displaySignUpModal ?  
            <SignUp 
            displaySignUpModalAction={this.props.displaySignUpModalAction}
-           submitEmailAction={this.props.submitEmailAction}
            submitCryptedPasswordAction={this.props.submitCryptedPasswordAction}
+           submitEmailAction={this.props.submitEmailAction}
+           submitNameAction={this.props.submitNameAction}
            sendSignUpAction={sendSignUpAction}
            /> : ''
           }
@@ -71,6 +75,8 @@ class App extends Component {
            store.getState().displayLogInModal ?
            <LogIn 
            displayLogInModalAction={this.props.displayLogInModalAction}
+           submitEmailAction={this.props.submitEmailAction}
+           submitCryptedPasswordAction={this.props.submitCryptedPasswordAction}
            sendLogIn={sendLogIn}
            /> : ''
          }

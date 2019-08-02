@@ -8,6 +8,7 @@ import {
     SUBMIT_SEARCH_FIELD,
     SUBMIT_EMAIL,
     SUBMIT_CRYPTED_PASSWORD,
+    SUBMIT_NAME,
 } from './constants.js';
 
 export const showText = () => {
@@ -46,6 +47,14 @@ export const submitEmailAction = (event) => {
     }
 }
 
+export const submitNameAction = (event) => {
+    return {
+        type: SUBMIT_NAME,
+        submitNamePayload: event.target.value
+    }
+}
+
+
 export const submitCryptedPasswordAction = (event) => {
     return {
         type: SUBMIT_CRYPTED_PASSWORD,
@@ -71,8 +80,9 @@ export const sendSignUpAction = () => {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
+            crypted_password: store.getState().cryptedPassword,
             email: store.getState().email,
-            crypted_password: store.getState().cryptedPassword
+            name: store.getState().name
         })
     })
 }
@@ -82,8 +92,8 @@ export const sendLogIn = () => {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
+            crypted_password: store.getState().cryptedPassword,
             email: store.getState().email,
-            crypted_password: store.getState().cryptedPassword
         })
     }).then(data => console.log(data.json()))
 }
