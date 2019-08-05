@@ -7,3 +7,5 @@ export const SUBMIT_EMAIL = "SUBMIT_EMAIL";
 export const SUBMIT_CRYPTED_PASSWORD = "SUBMIT_CRYPTED_PASSWORD";
 export const LOG_IN = "LOG_IN";
 export const SUBMIT_NAME = "SUBMIT_NAME";
+export const IS_LOGGED_IN = "IS_LOGGED_IN";
+export const LOAD_USER = "LOAD_USER";
