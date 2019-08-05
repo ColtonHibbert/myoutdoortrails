@@ -9,6 +9,8 @@ import {
     SUBMIT_EMAIL,
     SUBMIT_CRYPTED_PASSWORD,
     SUBMIT_NAME,
+    LOAD_USER,
+    IS_LOGGED_IN,
 } from './constants.js';
 
 export const showText = () => {
@@ -48,6 +50,7 @@ export const submitEmailAction = (event) => {
 }
 
 export const submitNameAction = (event) => {
+    console.log("should sub name")
     return {
         type: SUBMIT_NAME,
         submitNamePayload: event.target.value
@@ -59,6 +62,23 @@ export const submitCryptedPasswordAction = (event) => {
     return {
         type: SUBMIT_CRYPTED_PASSWORD,
         submitCryptedPasswordPayload: event.target.value
+    }
+}
+
+export const isLoggedIn = () => {
+    return {
+        type: IS_LOGGED_IN,
+        loggedInPayload: !store.getState().loggedIn
+    }
+}
+
+export const loadUser = (user) => {
+    return {
+        type: LOAD_USER,
+        idPayload: user.id,
+        namePayload: user.name,
+        emailPayload: user.email,
+        joinedPayload: user.joined
     }
 }
 
@@ -81,8 +101,8 @@ export const sendSignUpAction = () => {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
             crypted_password: store.getState().cryptedPassword,
-            email: store.getState().email,
-            name: store.getState().name
+            email: store.getState().user.email,
+            name: store.getState().user.name
         })
     })
 }
@@ -93,7 +113,14 @@ export const sendLogIn = () => {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
             crypted_password: store.getState().cryptedPassword,
-            email: store.getState().email,
+            email: store.getState().user.email,
         })
-    }).then(data => console.log(data.json()))
+    })
+    .then(user => user.json())
+    .then(user => {
+        if (user.email) {
+                store.dispatch(loadUser(user))
+                store.dispatch(isLoggedIn())
+        }
+    })
 }

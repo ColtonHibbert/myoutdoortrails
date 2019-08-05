@@ -36,9 +36,9 @@ const mapStateToProps = (state) => {
     displaySignUpModal: state.displaySignUpModal,
     displayLogInModal: state.displayLogInModal,
     searchField: state.searchField,
-    email: state.email,
+    email: state.user.email,
     cryptedPassword: state.cryptedPassword,
-    name: state.name,
+    name: state.user.name,
   }
 }
 

@@ -7,6 +7,8 @@ import {
     SUBMIT_EMAIL,
     SUBMIT_CRYPTED_PASSWORD,
     SUBMIT_NAME,
+    IS_LOGGED_IN,
+    LOAD_USER,
 } from './constants.js';
 
 
@@ -15,13 +17,16 @@ const initialState = {
     displaySignUpModal: false,
     displayLogInModal: false,
     searchField: '',
-    email: '',
     cryptedPassword: '',
-    name: '',
+    loggedIn: false,
+    user: {
+        id: '',
+        name: '',
+        email: '',
+        joined: ''
+    }
 }
-// if(action.type === ) {
-//     return {...state, : action.}
-// } 
+
 
 export const reducer = (state=initialState, action={}) => {
     if(action.type === SHOW_TEXT) {
@@ -37,13 +42,36 @@ export const reducer = (state=initialState, action={}) => {
         return {...state, searchField: action.submitSearchFieldPayload }
     }
     if(action.type === SUBMIT_EMAIL) {
-        return {...state, email: action.submitEmailPayload}
+        return {...state, 
+            user: {
+                ...state.user, 
+                email: action.submitEmailPayload 
+            }
+        }
     }
     if(action.type === SUBMIT_CRYPTED_PASSWORD) {
         return {...state, cryptedPassword: action.submitCryptedPasswordPayload }
     }
     if(action.type === SUBMIT_NAME) {
-    return {...state, name: action.submitNamePayload }
+        return {...state, 
+            user: {
+                ...state.user, 
+                name: action.submitNamePayload 
+            } 
+        }
+    }
+    if(action.type === IS_LOGGED_IN) {
+        return {...state, loggedIn: action.loggedInPayload }
+    }
+    if(action.type === LOAD_USER) {
+        return {...state, 
+            user: {
+                id: action.idPayload,
+                name: action.namePayload,
+                email: action.emailPayload,
+                joined: action.joinedPayload,
+            }
+        }
     }
     return state;
 }
