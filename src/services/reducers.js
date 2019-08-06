@@ -9,6 +9,7 @@ import {
     SUBMIT_NAME,
     IS_LOGGED_IN,
     LOAD_USER,
+    RESET_USER,
 } from './constants.js';
 
 
@@ -71,6 +72,17 @@ export const reducer = (state=initialState, action={}) => {
                 email: action.emailPayload,
                 joined: action.joinedPayload,
             }
+        }
+    }
+    if(action.type === RESET_USER) {
+        return {...state, 
+            cryptedPassword: '',
+            user: {
+                id: action.idPayload,
+                name: action.namePayload,
+                email: action.emailPayload,
+                joined: action.joinedPayload,
+                }
         }
     }
     return state;

@@ -28,6 +28,8 @@ import {
   submitNameAction,
   sendSignUpAction,
   sendLogIn,
+  isLoggedIn,
+  resetUser,
 } from '../services/actions.js';
 
 const mapStateToProps = (state) => {
@@ -39,6 +41,7 @@ const mapStateToProps = (state) => {
     email: state.user.email,
     cryptedPassword: state.cryptedPassword,
     name: state.user.name,
+    loggedIn: state.loggedIn,
   }
 }
 
@@ -52,6 +55,11 @@ const mapDispatchToProps = (dispatch) => {
     submitEmailAction: (event) => dispatch(submitEmailAction(event)),
     submitCryptedPasswordAction: (event) => dispatch(submitCryptedPasswordAction(event)),
     submitNameAction: (event) => dispatch(submitNameAction(event)),
+    isLoggedIn: () => dispatch(isLoggedIn()),
+    signOut: () => {
+      dispatch(isLoggedIn());
+      dispatch(resetUser());
+    },
   }
 }
 
@@ -83,6 +91,8 @@ class App extends Component {
         <Navigation 
           displaySignUpModalAction={this.props.displaySignUpModalAction}
           displayLogInModalAction={this.props.displayLogInModalAction}
+          signOut={this.props.signOut}
+          loggedIn={this.props.loggedIn}
           />
         <Hero>
           <HeroSearch
