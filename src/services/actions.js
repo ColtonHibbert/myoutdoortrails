@@ -11,6 +11,7 @@ import {
     SUBMIT_NAME,
     LOAD_USER,
     IS_LOGGED_IN,
+    RESET_USER,
 } from './constants.js';
 
 export const showText = () => {
@@ -82,6 +83,16 @@ export const loadUser = (user) => {
     }
 }
 
+export const resetUser = () => {
+    return {
+        type: RESET_USER,
+        idPayload: '',
+        namePayload: '',
+        emailPayload: '',
+        joinedPayload: ''
+    }
+}
+
 // http:localhost:3001/searchfield
 
 export const sendSearchFieldAction = () => {
@@ -105,6 +116,14 @@ export const sendSignUpAction = () => {
             name: store.getState().user.name
         })
     })
+    .then(user => user.json())
+    .then(user => {
+        if (user.email) {
+                store.dispatch(loadUser(user))
+                store.dispatch(isLoggedIn())
+                store.dispatch(displaySignUpModalAction())
+        }
+    })
 }
 
 export const sendLogIn = () => {
@@ -121,6 +140,7 @@ export const sendLogIn = () => {
         if (user.email) {
                 store.dispatch(loadUser(user))
                 store.dispatch(isLoggedIn())
+                store.dispatch(displayLogInModalAction())
         }
     })
 }

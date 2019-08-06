@@ -1,6 +1,8 @@
 import React from 'react';
+import { store } from '../index.js';
+import { isLoggedIn } from '../services/actions.js';
 
-export const Navigation = ({ displaySignUpModalAction, displayLogInModalAction }) => {
+export const Navigation = ({ displaySignUpModalAction, displayLogInModalAction, signOut, loggedIn }) => {
     return (
         <div>
             <nav class="db dt-l w-100 border-box pa3 ph5-l">
@@ -14,13 +16,22 @@ export const Navigation = ({ displaySignUpModalAction, displayLogInModalAction }
                     <a class="link dim dark-gray f6 f5-l dib mr3 mr4-l" href="#" title="Best Hikes">Best Hikes</a>
                     <a class="link dim dark-gray f6 f5-l dib mr3 mr4-l" href="#" title="Featured">Featured</a>
                     <a class="link dim dark-gray f6 f5-l dib mr3 mr4-l" href="#" title="Forum">Forum</a>
-                    <a 
-                    class="link dim dark-gray f6 f5-l dib mr3 mr4-l" href="#" title="Log in"
-                        onClick={displayLogInModalAction}
-                    >Log in</a>
-                    <a class="link dim dark-gray f6 f5-l dib" href="#" title="Sign up"
-                        onClick={displaySignUpModalAction}
-                    >Sign Up</a>
+                    {
+                        loggedIn ? 
+                        <a class="link dim dark-gray f6 f5-l dib" href="#" title="Sign up"
+                            onClick={signOut}
+                        >Sign Out</a>
+                        :
+                        <div>
+                            <a 
+                            class="link dim dark-gray f6 f5-l dib mr3 mr4-l" href="#" title="Log in"
+                                onClick={displayLogInModalAction}
+                            >Log in</a>
+                            <a class="link dim dark-gray f6 f5-l dib" href="#" title="Sign up"
+                                onClick={displaySignUpModalAction}
+                            >Sign Up</a>
+                        </div>
+                    }
                 </div>
             </nav>
         </div>
