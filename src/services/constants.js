@@ -10,3 +10,4 @@ export const SUBMIT_NAME = "SUBMIT_NAME";
 export const IS_LOGGED_IN = "IS_LOGGED_IN";
 export const LOAD_USER = "LOAD_USER";
 export const RESET_USER = "RESET_USER";
+export const IS_MOBILE = "IS_MOBILE";

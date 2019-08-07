@@ -10,11 +10,13 @@ import {
     IS_LOGGED_IN,
     LOAD_USER,
     RESET_USER,
+    IS_MOBILE,
 } from './constants.js';
 
 
 const initialState = {
     text: 'hello',
+    isMobile: false,
     displaySignUpModal: false,
     displayLogInModal: false,
     searchField: '',
@@ -84,6 +86,9 @@ export const reducer = (state=initialState, action={}) => {
                 joined: action.joinedPayload,
                 }
         }
+    }
+    if(action.type === IS_MOBILE) {
+        return {...state, isMobile: action.isMobilePayload}
     }
     return state;
 }
