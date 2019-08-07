@@ -4,6 +4,7 @@ import '../services/styles.css';
 import 'redux';
 import { connect } from 'react-redux';
 import { store } from '../index.js';
+import debounce from 'lodash.debounce';
 import Navigation from '../components/Navigation.js';
 import SignUp from '../components/SignUp.js';
 import LogIn from '../components/LogIn.js';
@@ -30,6 +31,7 @@ import {
   sendLogIn,
   isLoggedIn,
   resetUser,
+  isMobileAction,
 } from '../services/actions.js';
 
 const mapStateToProps = (state) => {
@@ -42,6 +44,7 @@ const mapStateToProps = (state) => {
     cryptedPassword: state.cryptedPassword,
     name: state.user.name,
     loggedIn: state.loggedIn,
+    isMobile: state.isMobile,
   }
 }
 
@@ -62,12 +65,35 @@ const mapDispatchToProps = (dispatch) => {
     },
   }
 }
-
+//reducer state true/false for < 481
 class App extends Component {
+  constructor() {
+    super();
+    console.log(debounce)
+  }
+  
+  updateDimensions = debounce(() => {
+      const minWidth = window.innerWidth;
+      const greaterThanMobileWidth = 481;
+      if(minWidth < greaterThanMobileWidth) {
+        console.log("should be dispatching isMobileAction")
+        store.dispatch(isMobileAction(true))
+      }
+      if(minWidth > greaterThanMobileWidth) {
+        console.log("should be dispatching isMobileAction")
+        store.dispatch(isMobileAction(false))
+      }
+    },200, {trailing: true})
+  
+  componentDidMount() {
+    console.log("component moumnted")
+    this.updateDimensions();
+    window.addEventListener("resize",this.updateDimensions)
+  }
   render() {
     return ( 
       <div 
-      className={!store.getState().displaySignUpModal ? 'min-vh-100 bg-green relative' : 'min-vh-100 bg-green relative'}
+      className="min-vh-100 pa0 ma0 bg-green relative"
       >
          {
            store.getState().displaySignUpModal ?  
@@ -93,6 +119,7 @@ class App extends Component {
           displayLogInModalAction={this.props.displayLogInModalAction}
           signOut={this.props.signOut}
           loggedIn={this.props.loggedIn}
+          isMobile={this.props.isMobile}
           />
         <Hero>
           <HeroSearch

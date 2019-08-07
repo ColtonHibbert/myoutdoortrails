@@ -12,6 +12,7 @@ import {
     LOAD_USER,
     IS_LOGGED_IN,
     RESET_USER,
+    IS_MOBILE,
 } from './constants.js';
 
 export const showText = () => {
@@ -90,6 +91,13 @@ export const resetUser = () => {
         namePayload: '',
         emailPayload: '',
         joinedPayload: ''
+    }
+}
+
+export const isMobileAction = (payload) => {
+    return {
+        type: IS_MOBILE,
+        isMobilePayload: payload
     }
 }
 
