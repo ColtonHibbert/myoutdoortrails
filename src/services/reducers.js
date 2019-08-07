@@ -11,6 +11,7 @@ import {
     LOAD_USER,
     RESET_USER,
     IS_MOBILE,
+    DISPLAY_MOBILE_MENU,
 } from './constants.js';
 
 
@@ -19,6 +20,7 @@ const initialState = {
     isMobile: false,
     displaySignUpModal: false,
     displayLogInModal: false,
+    displayMobileMenu: false,
     searchField: '',
     cryptedPassword: '',
     loggedIn: false,
@@ -89,6 +91,9 @@ export const reducer = (state=initialState, action={}) => {
     }
     if(action.type === IS_MOBILE) {
         return {...state, isMobile: action.isMobilePayload}
+    }
+    if(action.type === DISPLAY_MOBILE_MENU) {
+        return {...state, displayMobileMenu: action.displayMobileMenuPayload }
     }
     return state;
 }

@@ -8,6 +8,8 @@ import debounce from 'lodash.debounce';
 import Navigation from '../components/Navigation.js';
 import SignUp from '../components/SignUp.js';
 import LogIn from '../components/LogIn.js';
+import MobileMenu from '../components/MobileMenu.js';
+import SearchFieldComponent from '../components/SearchFieldComponent.js';
 import Hero from '../components/Hero.js';
 import HeroSearch from '../components/HeroSearch.js';
 import CenterSection from '../components/CenterSection.js';
@@ -32,13 +34,16 @@ import {
   isLoggedIn,
   resetUser,
   isMobileAction,
+  displayMobileMenuAction,
 } from '../services/actions.js';
+import SearchField from '../components/SearchFieldComponent';
 
 const mapStateToProps = (state) => {
   return {
     text: state.text,
     displaySignUpModal: state.displaySignUpModal,
     displayLogInModal: state.displayLogInModal,
+    displayMobileMenu: state.displayMobileMenu,
     searchField: state.searchField,
     email: state.user.email,
     cryptedPassword: state.cryptedPassword,
@@ -63,6 +68,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(isLoggedIn());
       dispatch(resetUser());
     },
+    displayMobileMenuAction: () => dispatch(displayMobileMenuAction())
   }
 }
 //reducer state true/false for < 481
@@ -117,15 +123,28 @@ class App extends Component {
         <Navigation 
           displaySignUpModalAction={this.props.displaySignUpModalAction}
           displayLogInModalAction={this.props.displayLogInModalAction}
+          displayMobileMenuAction={this.props.displayMobileMenuAction}
           signOut={this.props.signOut}
           loggedIn={this.props.loggedIn}
           isMobile={this.props.isMobile}
-          />
+        />
+        {
+          store.getState().displayMobileMenu ? 
+          <MobileMenu> 
+            <SearchFieldComponent 
+              submitSearchFieldAction={this.props.submitSearchFieldAction}
+              sendSearchFieldAction={sendSearchFieldAction}
+            />
+          </MobileMenu>
+          : ''
+        }
         <Hero>
-          <HeroSearch
+          <HeroSearch>
+            <SearchFieldComponent 
             submitSearchFieldAction={this.props.submitSearchFieldAction}
             sendSearchFieldAction={sendSearchFieldAction}
-          ></HeroSearch>
+            />
+          </HeroSearch>
         </Hero>
         <CenterSection>
           <HikesNearYouList />

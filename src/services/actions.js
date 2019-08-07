@@ -13,6 +13,7 @@ import {
     IS_LOGGED_IN,
     RESET_USER,
     IS_MOBILE,
+    DISPLAY_MOBILE_MENU,
 } from './constants.js';
 
 export const showText = () => {
@@ -98,6 +99,13 @@ export const isMobileAction = (payload) => {
     return {
         type: IS_MOBILE,
         isMobilePayload: payload
+    }
+}
+
+export const displayMobileMenuAction = () => {
+    return {
+        type: DISPLAY_MOBILE_MENU,
+        displayMobileMenuPayload: !store.getState().displayMobileMenu
     }
 }
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { store } from '../index.js';
 import { isLoggedIn } from '../services/actions.js';
 
-export const Navigation = ({ displaySignUpModalAction, displayLogInModalAction, signOut, loggedIn, isMobile }) => {
+export const Navigation = ({ displaySignUpModalAction, displayLogInModalAction, signOut, loggedIn, isMobile, displayMobileMenuAction }) => {
     return (
         <div>
             <nav class="w-100 pv3">
@@ -19,7 +19,11 @@ export const Navigation = ({ displaySignUpModalAction, displayLogInModalAction, 
                     </div>
                     {
                         isMobile ?
-                        <svg className="w2 h2 flex items-center pa0 ma0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path></svg>
+                        <div
+                            onClick={displayMobileMenuAction}
+                        >
+                            <svg className="w2 h2 flex items-center pa0 ma0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path></svg>
+                        </div>
                         : ''
                     }
                 </div>
