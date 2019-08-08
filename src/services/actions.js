@@ -14,6 +14,7 @@ import {
     RESET_USER,
     IS_MOBILE,
     DISPLAY_MOBILE_MENU,
+    UN_DISPLAY_MOBILE_MENU,
 } from './constants.js';
 
 export const showText = () => {
@@ -108,6 +109,14 @@ export const displayMobileMenuAction = () => {
         displayMobileMenuPayload: !store.getState().displayMobileMenu
     }
 }
+
+export const unDisplayMobileMenuAction = (payload) => {
+    return {
+        type: UN_DISPLAY_MOBILE_MENU,
+        unDisplayMobileMenuPayload: payload
+    }
+}
+
 
 // http:localhost:3001/searchfield
 

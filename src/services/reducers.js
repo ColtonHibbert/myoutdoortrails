@@ -12,6 +12,7 @@ import {
     RESET_USER,
     IS_MOBILE,
     DISPLAY_MOBILE_MENU,
+    UN_DISPLAY_MOBILE_MENU,
 } from './constants.js';
 
 
@@ -94,6 +95,9 @@ export const reducer = (state=initialState, action={}) => {
     }
     if(action.type === DISPLAY_MOBILE_MENU) {
         return {...state, displayMobileMenu: action.displayMobileMenuPayload }
+    }
+    if(action.type === UN_DISPLAY_MOBILE_MENU) {
+        return {...state, displayMobileMenu: action.unDisplayMobileMenuPayload}
     }
     return state;
 }

@@ -12,3 +12,4 @@ export const LOAD_USER = "LOAD_USER";
 export const RESET_USER = "RESET_USER";
 export const IS_MOBILE = "IS_MOBILE";
 export const DISPLAY_MOBILE_MENU = "DISPLAY_MOBILE_MENU";
+export const UN_DISPLAY_MOBILE_MENU = "UN_DISPLAY_MOBILE_MENU";

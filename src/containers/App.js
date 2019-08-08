@@ -9,7 +9,7 @@ import Navigation from '../components/Navigation.js';
 import SignUp from '../components/SignUp.js';
 import LogIn from '../components/LogIn.js';
 import MobileMenu from '../components/MobileMenu.js';
-import SearchFieldComponent from '../components/SearchFieldComponent.js';
+import { SearchFieldComponent, SEARCHFIELDCOMPONENTSTYLES} from '../components/SearchFieldComponent.js';
 import Hero from '../components/Hero.js';
 import HeroSearch from '../components/HeroSearch.js';
 import CenterSection from '../components/CenterSection.js';
@@ -35,8 +35,10 @@ import {
   resetUser,
   isMobileAction,
   displayMobileMenuAction,
+  unDisplayMobileMenuAction,
 } from '../services/actions.js';
 import SearchField from '../components/SearchFieldComponent';
+import MobileMenuItem from '../components/MobileMenuItem';
 
 const mapStateToProps = (state) => {
   return {
@@ -68,6 +70,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(isLoggedIn());
       dispatch(resetUser());
     },
+    unDisplayMobileMenuAction: (payload) => dispatch(unDisplayMobileMenuAction(payload)),
     displayMobileMenuAction: () => dispatch(displayMobileMenuAction())
   }
 }
@@ -80,26 +83,25 @@ class App extends Component {
   
   updateDimensions = debounce(() => {
       const minWidth = window.innerWidth;
-      const greaterThanMobileWidth = 481;
+      const greaterThanMobileWidth = 479;
       if(minWidth < greaterThanMobileWidth) {
-        console.log("should be dispatching isMobileAction")
         store.dispatch(isMobileAction(true))
       }
       if(minWidth > greaterThanMobileWidth) {
-        console.log("should be dispatching isMobileAction")
         store.dispatch(isMobileAction(false))
+        store.dispatch(unDisplayMobileMenuAction(false))
       }
-    },200, {trailing: true})
+    },100, {trailing: true})
   
   componentDidMount() {
-    console.log("component moumnted")
+    console.log("component mounted")
     this.updateDimensions();
     window.addEventListener("resize",this.updateDimensions)
   }
   render() {
     return ( 
       <div 
-      className="min-vh-100 pa0 ma0 bg-green relative"
+      className="min-vh-100 w-100 pa0 ma0 bg-green relative"
       >
          {
            store.getState().displaySignUpModal ?  
@@ -134,7 +136,22 @@ class App extends Component {
             <SearchFieldComponent 
               submitSearchFieldAction={this.props.submitSearchFieldAction}
               sendSearchFieldAction={sendSearchFieldAction}
+              buttonstyle={SEARCHFIELDCOMPONENTSTYLES.PRIMARYBUTTON}
+              searchfieldstyle={SEARCHFIELDCOMPONENTSTYLES.MOBILEMENUSEARCHFIELD}
             />
+            <MobileMenuItem text="Best Hikes"/>
+            <MobileMenuItem text="Featured"/>
+            <MobileMenuItem text="Forum"/>
+            {
+              !this.props.loggedIn ?
+              <div className="w-100">
+                <MobileMenuItem text="Login" clickFunction={this.props.displayLogInModalAction}/>
+                <MobileMenuItem text="Sign Up" clickFunction={this.props.displaySignUpModalAction} />
+              </div>
+              : 
+              <MobileMenuItem text="Sign Out" clickFunction={this.props.signOut} />
+            }
+            
           </MobileMenu>
           : ''
         }
@@ -143,6 +160,8 @@ class App extends Component {
             <SearchFieldComponent 
             submitSearchFieldAction={this.props.submitSearchFieldAction}
             sendSearchFieldAction={sendSearchFieldAction}
+            buttonstyle={SEARCHFIELDCOMPONENTSTYLES.PRIMARYBUTTON}
+            searchfieldstyle={SEARCHFIELDCOMPONENTSTYLES.HEROSEARCHFIELD}
             />
           </HeroSearch>
         </Hero>
