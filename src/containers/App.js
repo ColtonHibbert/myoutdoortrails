@@ -37,7 +37,6 @@ import {
   displayMobileMenuAction,
   unDisplayMobileMenuAction,
 } from '../services/actions.js';
-import SearchField from '../components/SearchFieldComponent';
 import MobileMenuItem from '../components/MobileMenuItem';
 
 const mapStateToProps = (state) => {
@@ -74,7 +73,7 @@ const mapDispatchToProps = (dispatch) => {
     displayMobileMenuAction: () => dispatch(displayMobileMenuAction())
   }
 }
-//reducer state true/false for < 481
+
 class App extends Component {
   constructor() {
     super();
