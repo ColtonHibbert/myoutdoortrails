@@ -1,12 +1,17 @@
 import React from 'react';
 import { store } from '../index.js';
-import { isLoggedIn } from '../services/actions.js';
+
 
 export const Navigation = ({ displaySignUpModalAction, displayLogInModalAction, signOut, loggedIn, isMobile, displayMobileMenuAction }) => {
     return (
         <div>
-            <nav class="w-100 pv3">
-                <div className="flex flex-row justify-between items-center ph3">
+            <nav className="
+                w-100 flex flex-row justify-between items-center ph3 pv3
+                flex-column-ns
+                flex-column-m 
+                flex-row-l"
+            >
+                <div className="">
                     <div className="flex items-center">
                         <a class="w-100 flex " href="#" title="Home">
                             <div className="dib w2 h2">
@@ -14,43 +19,47 @@ export const Navigation = ({ displaySignUpModalAction, displayLogInModalAction, 
                             </div>
                         </a>
                         <h1 
-                            className="flex f5 f5-ns pl1 ma0"
+                            className=
+                            "flex f5 f4-ns f3-m f2-l pl1 ma0"
                         >MyOutdoorTrails</h1>
                     </div>
-                    {
-                        isMobile ?
-                        <div
-                            onClick={displayMobileMenuAction}
-                        >
-                            <svg className="w2 h2 flex items-center pa0 ma0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path></svg>
-                        </div>
-                        : ''
-                    }
                 </div>
+                {
+                    isMobile ?
+                    <div
+                        onClick={() => displayMobileMenuAction()}
+                    >
+                        <svg className="w2 h2 flex items-center pa0 ma0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path></svg>
+                    </div>
+                    : ''
+                }
                 {
                     isMobile ? ''
                     : 
-                    <div class="db dtc-l v-mid w-100 w-75-l tc tr-l pt2">
-                    <a class="link dim dark-gray f6 f5-l dib mr3 mr4-l" href="#" title="Best Hikes">Best Hikes</a>
-                    <a class="link dim dark-gray f6 f5-l dib mr3 mr4-l" href="#" title="Featured">Featured</a>
-                    <a class="link dim dark-gray f6 f5-l dib mr3 mr4-l" href="#" title="Forum">Forum</a>
+                    <div 
+                    class="w-100 h2 mt3 flex items-center justify-center tc
+                    justify-end-l
+                    ">
+                        <div class="link dim dark-gray f6 f5-l dib mr3 mr4-l pointer" title="Best Hikes">Best Hikes</div>
+                        <div class="link dim dark-gray f6 f5-l dib mr3 mr4-l pointer" title="Featured">Featured</div>
+                        <div class="link dim dark-gray f6 f5-l dib mr3 mr4-l pointer" title="Forum">Forum</div>
                     {
                         loggedIn ? 
-                        <a class="link dim dark-gray f6 f5-l dib" href="#" title="Sign up"
+                        <div class="link dim dark-gray f6 f5-l dib" 
                             onClick={signOut}
-                        >Sign Out</a>
+                        >Sign Out</div>
                         :
-                        <div>
-                            <a 
-                            class="link dim dark-gray f6 f5-l dib mr3 mr4-l" href="#" title="Log in"
+                        <div className="flex">
+                            <div
+                            class="link dim dark-gray f6 f5-l dib mr3 mr4-l pointer" title="Log in"
                                 onClick={displayLogInModalAction}
-                            >Log in</a>
-                            <a class="link dim dark-gray f6 f5-l dib" href="#" title="Sign up"
+                            >Log in</div>
+                            <div class="link dim dark-gray f6 f5-l dib pointer" title="Sign up"
                                 onClick={displaySignUpModalAction}
-                            >Sign Up</a>
+                            >Sign Up</div>
                         </div>
                     }
-                </div>
+                    </div>
                 }
             </nav>
         </div>
