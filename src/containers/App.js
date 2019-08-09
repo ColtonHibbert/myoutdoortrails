@@ -36,6 +36,7 @@ import {
   isMobileAction,
   displayMobileMenuAction,
   unDisplayMobileMenuAction,
+  getTrails,
 } from '../services/actions.js';
 import MobileMenuItem from '../components/MobileMenuItem';
 
@@ -155,7 +156,9 @@ class App extends Component {
           : ''
         }
         <Hero>
-          <HeroSearch>
+          <HeroSearch
+          getTrails={getTrails}
+          >
             <SearchFieldComponent 
             submitSearchFieldAction={this.props.submitSearchFieldAction}
             sendSearchFieldAction={sendSearchFieldAction}
