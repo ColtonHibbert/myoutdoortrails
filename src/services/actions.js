@@ -16,7 +16,7 @@ import {
     DISPLAY_MOBILE_MENU,
     UN_DISPLAY_MOBILE_MENU,
 } from './constants.js';
-import HPKEY from '../config/config.js';
+import { HPKEY, MAPBOXKEY } from '../config/config.js';
 
 export const showText = () => {
     return {
@@ -172,8 +172,13 @@ export const sendLogIn = () => {
 }
 
 export const getTrails = () => {
-    console.log("should get trails")
-    fetch(`https://www.hikingproject.com/data/get-trails?lat=40.0274&lon=-105.2519&maxDistance=10&key=${HPKEY}`)
+    fetch(`https://www.hikingproject.com/data/get-trails?lat=34.0544&lon=-118.2439&maxDistance=50&key=${HPKEY}`)
+    .then(res => res.json())
+    .then(data => console.log(data))
+}
+
+export const forwardGeocoding = () => {
+    fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json?access_token=${MAPBOXKEY}`)
     .then(res => res.json())
     .then(data => console.log(data))
 }
