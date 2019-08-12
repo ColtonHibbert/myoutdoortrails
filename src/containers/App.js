@@ -37,6 +37,7 @@ import {
   displayMobileMenuAction,
   unDisplayMobileMenuAction,
   getTrails,
+  forwardGeocoding
 } from '../services/actions.js';
 import MobileMenuItem from '../components/MobileMenuItem';
 
@@ -158,6 +159,7 @@ class App extends Component {
         <Hero>
           <HeroSearch
           getTrails={getTrails}
+          forwardGeocoding={forwardGeocoding}
           >
             <SearchFieldComponent 
             submitSearchFieldAction={this.props.submitSearchFieldAction}
