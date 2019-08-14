@@ -37,9 +37,9 @@ import {
   displayMobileMenuAction,
   unDisplayMobileMenuAction,
   getTrails,
-  forwardGeocoding
+  forwardGeocoding,
 } from '../services/actions.js';
-import MobileMenuItem from '../components/MobileMenuItem';
+import MobileMenuItem from '../components/MobileMenuItem';;
 
 const mapStateToProps = (state) => {
   return {

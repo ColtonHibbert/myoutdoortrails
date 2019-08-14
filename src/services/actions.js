@@ -182,3 +182,4 @@ export const forwardGeocoding = () => {
     .then(res => res.json())
     .then(data => console.log(data))
 }
+
