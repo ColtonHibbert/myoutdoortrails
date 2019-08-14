@@ -1,6 +1,5 @@
 
 import {
-    SHOW_TEXT,
     DISPLAY_SIGN_UP_MODAL,
     DISPLAY_LOG_IN_MODAL,
     SUBMIT_SEARCH_FIELD,
@@ -13,18 +12,21 @@ import {
     IS_MOBILE,
     DISPLAY_MOBILE_MENU,
     UN_DISPLAY_MOBILE_MENU,
+    FORWARD_GEOCODING_RESPONSE,
+    GET_TRAILS_RESPONSE,
 } from './constants.js';
 
 
 const initialState = {
-    text: 'hello',
-    isMobile: false,
+    cryptedPassword: '',
     displaySignUpModal: false,
     displayLogInModal: false,
     displayMobileMenu: false,
-    searchField: '',
-    cryptedPassword: '',
+    getTrailsResponse: {},
+    isMobile: false,
     loggedIn: false,
+    forwardGeocodingResponse: {},
+    searchField: '',
     user: {
         id: '',
         name: '',
@@ -35,9 +37,6 @@ const initialState = {
 
 
 export const reducer = (state=initialState, action={}) => {
-    if(action.type === SHOW_TEXT) {
-        return {...state, text: action.textPayload}
-    } 
     if(action.type === DISPLAY_SIGN_UP_MODAL) {
         return {...state, displaySignUpModal: action.displaySignUpModalPayload }
     }
@@ -91,13 +90,16 @@ export const reducer = (state=initialState, action={}) => {
         }
     }
     if(action.type === IS_MOBILE) {
-        return {...state, isMobile: action.isMobilePayload}
+        return {...state, isMobile: action.isMobilePayload }
     }
     if(action.type === DISPLAY_MOBILE_MENU) {
         return {...state, displayMobileMenu: action.displayMobileMenuPayload }
     }
     if(action.type === UN_DISPLAY_MOBILE_MENU) {
-        return {...state, displayMobileMenu: action.unDisplayMobileMenuPayload}
+        return {...state, displayMobileMenu: action.unDisplayMobileMenuPayload }
+    }
+    if(action.type === FORWARD_GEOCODING_RESPONSE) {
+        return {...state, forwardGeocodingResponse: action.forwardGeocodingResponsePayload }
     }
     return state;
 }

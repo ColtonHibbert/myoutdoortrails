@@ -2,7 +2,6 @@
 import 'redux';
 import { store } from '../index.js';
 import {
-    SHOW_TEXT,
     DISPLAY_SIGN_UP_MODAL,
     DISPLAY_LOG_IN_MODAL,
     SUBMIT_SEARCH_FIELD,
@@ -15,15 +14,12 @@ import {
     IS_MOBILE,
     DISPLAY_MOBILE_MENU,
     UN_DISPLAY_MOBILE_MENU,
+    FORWARD_GEOCODING_RESPONSE,
+    GET_TRAILS_RESPONSE,
 } from './constants.js';
 import { HPKEY, MAPBOXKEY } from '../config/config.js';
 
-export const showText = () => {
-    return {
-        type: SHOW_TEXT,
-        textPayload: "Cool Redux works!"
-    }
-}
+
 
 export const displaySignUpModalAction = () => {
     return {
@@ -178,8 +174,17 @@ export const getTrails = () => {
 }
 
 export const forwardGeocoding = () => {
-    fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json?access_token=${MAPBOXKEY}`)
+     fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json?access_token=${MAPBOXKEY}`)
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then( data => {
+        store.dispatch(forwardGeocodingResponse(data))
+    })
+}
+
+export const forwardGeocodingResponse = (data) => {
+    return {
+        type: FORWARD_GEOCODING_RESPONSE,
+        forwardGeocodingResponsePayload: data
+    }
 }
 
