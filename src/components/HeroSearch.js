@@ -4,7 +4,6 @@ import { forwardGeocoding } from '../services/actions';
 
 
 export const HeroSearch = (props) => {
-    console.log(props)
     return (
         <div className="w-100 flex flex-column justify-center items-center">
             <h2>Hike your next great adventure</h2>

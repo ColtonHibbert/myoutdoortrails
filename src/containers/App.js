@@ -15,13 +15,12 @@ import HeroSearch from '../components/HeroSearch.js';
 import CenterSection from '../components/CenterSection.js';
 import HikesNearYouList from '../components/HikesNearYouList.js';
 import RecommendedHikesList from '../components/RecommendedHikesList.js';
-import Map from '../components/Map.js';
+import Map from './Map.js';
 import LowerMainPageContent from '../components/LowerMainPageContent.js';
 import GearReviews from '../components/GearReviews.js';
 import MainPageArticles from '../components/MainPageArticles.js';
 import Footer from '../components/Footer.js';
 import { 
-  showText, 
   displaySignUpModalAction,
   displayLogInModalAction,
   submitSearchFieldAction,
@@ -43,7 +42,6 @@ import MobileMenuItem from '../components/MobileMenuItem';;
 
 const mapStateToProps = (state) => {
   return {
-    text: state.text,
     displaySignUpModal: state.displaySignUpModal,
     displayLogInModal: state.displayLogInModal,
     displayMobileMenu: state.displayMobileMenu,
@@ -59,7 +57,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    showText: () => dispatch(showText()),
     displaySignUpModalAction: () => dispatch(displaySignUpModalAction()),
     displayLogInModalAction: () => dispatch(displayLogInModalAction()),
     submitSearchFieldAction: (event) => dispatch(submitSearchFieldAction(event)),
@@ -72,7 +69,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(resetUser());
     },
     unDisplayMobileMenuAction: (payload) => dispatch(unDisplayMobileMenuAction(payload)),
-    displayMobileMenuAction: () => dispatch(displayMobileMenuAction())
+    displayMobileMenuAction: () => dispatch(displayMobileMenuAction()),
   }
 }
 
@@ -99,6 +96,12 @@ class App extends Component {
     this.updateDimensions();
     window.addEventListener("resize",this.updateDimensions)
   }
+
+  checkResponse() {
+    const mapboxdata = store.getState().forwardGeocodingResponse.features;
+    console.log(mapboxdata);
+  }
+
   render() {
     return ( 
       <div 
@@ -131,6 +134,7 @@ class App extends Component {
           loggedIn={this.props.loggedIn}
           isMobile={this.props.isMobile}
         />
+        <button onClick={this.checkResponse}></button>
         {
           store.getState().displayMobileMenu ? 
           <MobileMenu> 
@@ -178,9 +182,6 @@ class App extends Component {
           <MainPageArticles />
           <GearReviews />
         </LowerMainPageContent>
-        <h1 className="bg-white blue"
-          onClick={this.props.showText}
-        >{this.props.text}</h1>
         <Footer>
         </Footer>
       </div>
