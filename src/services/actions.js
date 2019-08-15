@@ -168,13 +168,20 @@ export const sendLogIn = () => {
 }
 
 export const getTrails = () => {
-    fetch(`https://www.hikingproject.com/data/get-trails?lat=34.0544&lon=-118.2439&maxDistance=50&key=${HPKEY}`)
+    const lat = `lat=${store.getState().forwardGeocodingResponse.features[0].center[1]}`;
+    const lon = `lon=${store.getState().forwardGeocodingResponse.features[0].center[0]}`;
+    fetch(`https://www.hikingproject.com/data/get-trails?${lat}&${lon}&maxDistance=50&key=${HPKEY}`)
     .then(res => res.json())
     .then(data => console.log(data))
 }
 
 export const forwardGeocoding = () => {
-     fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json?access_token=${MAPBOXKEY}`)
+    const getSearchFieldURLValue = () => {
+        const newValue = store.getState().searchField.replace(" ", "%20")
+        return newValue;
+    }
+    const searchFieldURLValue = getSearchFieldURLValue();
+     fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${searchFieldURLValue}.json?access_token=${MAPBOXKEY}`)
     .then(res => res.json())
     .then( data => {
         store.dispatch(forwardGeocodingResponse(data))
