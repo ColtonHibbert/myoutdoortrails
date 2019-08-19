@@ -16,7 +16,6 @@ import {
     GET_TRAILS_RESPONSE,
 } from './constants.js';
 
-
 const initialState = {
     cryptedPassword: '',
     displaySignUpModal: false,
@@ -26,7 +25,10 @@ const initialState = {
     isMobile: false,
     loggedIn: false,
     forwardGeocodingResponse: {},
+    searchLatitude: "40.0274",
+    searchLongitude: "-105.2519",
     searchField: '',
+    trailsArray: [],
     user: {
         id: '',
         name: '',
@@ -99,7 +101,18 @@ export const reducer = (state=initialState, action={}) => {
         return {...state, displayMobileMenu: action.unDisplayMobileMenuPayload }
     }
     if(action.type === FORWARD_GEOCODING_RESPONSE) {
-        return {...state, forwardGeocodingResponse: action.forwardGeocodingResponsePayload }
+        return {...state, 
+            forwardGeocodingResponse: action.forwardGeocodingResponsePayload ,
+            searchLatitude: action.forwardGeocodingResponsePayload.features[0].center[1] ,
+            searchLongitude: action.forwardGeocodingResponsePayload.features[0].center[0]
+        }
+    }
+    if(action.type === GET_TRAILS_RESPONSE) {
+        return {
+            ...state,
+            getTrailsResponse: action.getTrailsResponsePayload,
+            trailsArray: action.trailsArrayPayload
+        }
     }
     return state;
 }

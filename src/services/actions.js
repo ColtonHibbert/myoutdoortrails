@@ -168,11 +168,21 @@ export const sendLogIn = () => {
 }
 
 export const getTrails = () => {
-    const lat = `lat=${store.getState().forwardGeocodingResponse.features[0].center[1]}`;
-    const lon = `lon=${store.getState().forwardGeocodingResponse.features[0].center[0]}`;
-    fetch(`https://www.hikingproject.com/data/get-trails?${lat}&${lon}&maxDistance=50&key=${HPKEY}`)
+    const lat = `${store.getState().searchLatitude}`;
+    const lon = `${store.getState().searchLongitude}`;
+    fetch(`https://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${lon}&maxDistance=50&key=${HPKEY}`)
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then(data => {
+        store.dispatch(getTrailsResponse(data))
+    })
+}
+
+export const getTrailsResponse = (data) => {
+    return {
+        type: GET_TRAILS_RESPONSE,
+        getTrailsResponsePayload: data,
+        trailsArrayPayload: data.trails
+    }
 }
 
 export const forwardGeocoding = () => {
