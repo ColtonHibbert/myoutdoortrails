@@ -28,6 +28,7 @@ const initialState = {
     searchLatitude: "40.0274",
     searchLongitude: "-105.2519",
     searchField: '',
+    trailsArray: [],
     user: {
         id: '',
         name: '',
@@ -104,6 +105,13 @@ export const reducer = (state=initialState, action={}) => {
             forwardGeocodingResponse: action.forwardGeocodingResponsePayload ,
             searchLatitude: action.forwardGeocodingResponsePayload.features[0].center[1] ,
             searchLongitude: action.forwardGeocodingResponsePayload.features[0].center[0]
+        }
+    }
+    if(action.type === GET_TRAILS_RESPONSE) {
+        return {
+            ...state,
+            getTrailsResponse: action.getTrailsResponsePayload,
+            trailsArray: action.trailsArrayPayload
         }
     }
     return state;
