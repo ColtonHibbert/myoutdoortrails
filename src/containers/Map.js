@@ -13,7 +13,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-    
+
 }
 class Map extends Component {
     constructor() {
@@ -41,7 +41,53 @@ class Map extends Component {
     componentDidUpdate() {
         this.map.setCenter([this.props.searchLongitude, this.props.searchLatitude]);
         console.log(this.map)
+        this.setTrailPointsToMap();
     }
+    
+    setTrailPointsToMap = () => {
+        console.log("should set points")
+        this.map.on('load', function () {
+            this.map.addLayer({
+                "id": "points",
+                "type": "symbol",
+                "source": {
+                "type": "geojson",
+                "data": {
+                "type": "FeatureCollection",
+                "features": [{
+                "type": "Feature",
+                "geometry": {
+                "type": "Point",
+                "coordinates": [-77.03238901390978, 38.913188059745586]
+                },
+                "properties": {
+                "title": "Mapbox DC",
+                "icon": "monument"
+                }
+                }, {
+                "type": "Feature",
+                "geometry": {
+                "type": "Point",
+                "coordinates": [-122.414, 37.776]
+                },
+                "properties": {
+                "title": "Mapbox SF",
+                "icon": "harbor"
+                }
+                }]
+                }
+                },
+                "layout": {
+                "icon-image": "{icon}-15",
+                "text-field": "{title}",
+                "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+                "text-offset": [0, 0.6],
+                "text-anchor": "top"
+                }
+            });
+        });
+    }
+
     render() {
         return (
             <div className="flex w-100">
@@ -56,47 +102,3 @@ class Map extends Component {
 
 export default connect(mapStateToProps, mapDispatchToProps)(Map);
 
-
-const setTrailPointsToMap = () => {
-    map.on('load', function () {
- 
-        map.addLayer({
-            "id": "points",
-            "type": "symbol",
-            "source": {
-            "type": "geojson",
-            "data": {
-            "type": "FeatureCollection",
-            "features": [{
-            "type": "Feature",
-            "geometry": {
-            "type": "Point",
-            "coordinates": [-77.03238901390978, 38.913188059745586]
-            },
-            "properties": {
-            "title": "Mapbox DC",
-            "icon": "monument"
-            }
-            }, {
-            "type": "Feature",
-            "geometry": {
-            "type": "Point",
-            "coordinates": [-122.414, 37.776]
-            },
-            "properties": {
-            "title": "Mapbox SF",
-            "icon": "harbor"
-            }
-            }]
-            }
-            },
-            "layout": {
-            "icon-image": "{icon}-15",
-            "text-field": "{title}",
-            "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
-            "text-offset": [0, 0.6],
-            "text-anchor": "top"
-            }
-        });
-    });
-}
