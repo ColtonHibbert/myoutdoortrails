@@ -8,7 +8,8 @@ mapboxgl.accessToken = MAPBOXKEY;
 const mapStateToProps = (state) => {
     return {
         searchLatitude: state.searchLatitude,
-        searchLongitude: state.searchLongitude
+        searchLongitude: state.searchLongitude,
+        trailsArray: state.trailsArray
     }
 }
 
@@ -38,15 +39,32 @@ class Map extends Component {
         });
         console.log(this.map)
     }
+
+    featuresHikingListArr = []
+    fillFeaturesHikingListArr() {
+        for (let i = 0; i < this.props.trailsArray.length; i++) {
+            const featuresHikingListItem = {
+                "type": "Feature",
+                "geometry": {
+                "type": "Point",
+                "coordinates": [this.props.trailsArray[i].longitude, this.props.trailsArray[i].latitude]
+                },
+                "properties": {
+                "title": this.props.trailsArray[i].name,
+                "icon": "marker"
+                }
+            }
+            this.featuresHikingListArr.push(featuresHikingListItem)
+        }
+    }
+    
+       
     componentDidUpdate() {
         this.map.setCenter([this.props.searchLongitude, this.props.searchLatitude]);
         console.log(this.map)
-        this.setTrailPointsToMap();
-    }
-    
-    setTrailPointsToMap = () => {
-        console.log("should set points")
-        this.map.on('load', function () {
+        if(this.props.trailsArray[0]) {
+            this.fillFeaturesHikingListArr();
+            console.log(this.featuresHikingListArr)
             this.map.addLayer({
                 "id": "points",
                 "type": "symbol",
@@ -54,27 +72,7 @@ class Map extends Component {
                 "type": "geojson",
                 "data": {
                 "type": "FeatureCollection",
-                "features": [{
-                "type": "Feature",
-                "geometry": {
-                "type": "Point",
-                "coordinates": [-77.03238901390978, 38.913188059745586]
-                },
-                "properties": {
-                "title": "Mapbox DC",
-                "icon": "monument"
-                }
-                }, {
-                "type": "Feature",
-                "geometry": {
-                "type": "Point",
-                "coordinates": [-122.414, 37.776]
-                },
-                "properties": {
-                "title": "Mapbox SF",
-                "icon": "harbor"
-                }
-                }]
+                "features": this.featuresHikingListArr,
                 }
                 },
                 "layout": {
@@ -85,8 +83,10 @@ class Map extends Component {
                 "text-anchor": "top"
                 }
             });
-        });
+        }
     }
+    
+    
 
     render() {
         return (
