@@ -42,6 +42,7 @@ class Map extends Component {
 
     featuresHikingListArr = []
     fillFeaturesHikingListArr() {
+        this.featuresHikingListArr = [];
         for (let i = 0; i < this.props.trailsArray.length; i++) {
             const featuresHikingListItem = {
                 "type": "Feature",
@@ -65,6 +66,11 @@ class Map extends Component {
         if(this.props.trailsArray[0]) {
             this.fillFeaturesHikingListArr();
             console.log(this.featuresHikingListArr)
+            const mapLayer = this.map.getLayer('points');
+            if(mapLayer !== undefined ) {
+                this.map.removeLayer('points');
+                this.map.removeSource('points');
+            }
             this.map.addLayer({
                 "id": "points",
                 "type": "symbol",
