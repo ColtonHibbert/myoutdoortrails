@@ -134,7 +134,6 @@ class App extends Component {
           loggedIn={this.props.loggedIn}
           isMobile={this.props.isMobile}
         />
-        <button onClick={this.checkResponse}></button>
         {
           store.getState().displayMobileMenu ? 
           <MobileMenu> 

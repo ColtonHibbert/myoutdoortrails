@@ -16,6 +16,8 @@ import {
     GET_TRAILS_RESPONSE,
 } from './constants.js';
 
+const recommendedHikes = [];
+
 const initialState = {
     cryptedPassword: '',
     displaySignUpModal: false,
