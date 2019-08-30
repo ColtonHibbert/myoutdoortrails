@@ -16,7 +16,8 @@ import {
     GET_TRAILS_RESPONSE,
 } from './constants.js';
 
-const recommendedHikes = [];
+import { initialBoulderCoArray, featuredArray } from './initialHikesArrays.js';
+
 
 const initialState = {
     cryptedPassword: '',
@@ -30,7 +31,8 @@ const initialState = {
     searchLatitude: "40.0274",
     searchLongitude: "-105.2519",
     searchField: '',
-    trailsArray: [],
+    trailsArray: initialBoulderCoArray,
+    featuredHikesArray: featuredArray,
     user: {
         id: '',
         name: '',

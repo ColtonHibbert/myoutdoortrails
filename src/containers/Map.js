@@ -20,27 +20,52 @@ class Map extends Component {
     constructor() {
         super();
     }
+   
     componentDidMount() {
+    //  console.log("should start this.map")
         this.map = new mapboxgl.Map({
-            container: this.mapContainer,
-            center: [this.props.searchLongitude, this.props.searchLatitude],
-            zoom: 13,
-            style: "mapbox://styles/mapbox/outdoors-v10",
-            hash: true,
-            transformRequest: (url, resourceType)=> {
-                if(resourceType === 'Source' && url.startsWith('http://myHost')) {
-                    return {
-                        url: url.replace('http', 'https'),
-                        headers: { 'my-custom-header': true},
-                        credentials: 'include'  // Include cookies for cross-origin requests
+                container: this.mapContainer,
+                center: [this.props.searchLongitude, this.props.searchLatitude],
+                zoom: 13,
+                style: "mapbox://styles/mapbox/outdoors-v10",
+                hash: true,
+                transformRequest: (url, resourceType)=> {
+                    if(resourceType === 'Source' && url.startsWith('http://myHost')) {
+                        return {
+                            url: url.replace('http', 'https'),
+                            headers: { 'my-custom-header': true},
+                            credentials: 'include'  // Include cookies for cross-origin requests
+                        }
                     }
                 }
-            }
-        });
-        console.log(this.map)
+            }) ;
+            console.log("should load map")
+            console.log(this.map)
+            this.map.on('styledataloading', () =>  {
+                console.log("should add layer bro")
+                this.map.addLayer({
+                    "id": "points",
+                    "type": "symbol",
+                    "source": {
+                    "type": "geojson",
+                    "data": {
+                    "type": "FeatureCollection",
+                    "features": this.props.trailsArray,
+                    }
+                    },
+                    "layout": {
+                    "icon-image": "{icon}-15",
+                    "text-field": "{title}",
+                    "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+                    "text-offset": [0, 0.6],
+                    "text-anchor": "top"
+                    }
+                });  
+            })
+        
     }
 
-    featuresHikingListArr = []
+    featuresHikingListArr = [];
     fillFeaturesHikingListArr() {
         this.featuresHikingListArr = [];
         for (let i = 0; i < this.props.trailsArray.length; i++) {
@@ -62,7 +87,7 @@ class Map extends Component {
        
     componentDidUpdate() {
         this.map.setCenter([this.props.searchLongitude, this.props.searchLatitude]);
-        console.log(this.map)
+        console.log("componentdidupdate on map")
         if(this.props.trailsArray[0]) {
             this.fillFeaturesHikingListArr();
             console.log(this.featuresHikingListArr)
