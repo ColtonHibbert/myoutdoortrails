@@ -51,6 +51,8 @@ const mapStateToProps = (state) => {
     name: state.user.name,
     loggedIn: state.loggedIn,
     isMobile: state.isMobile,
+    featuredHikesArray: state.featuredHikesArray,
+    trailsArray: state.trailsArray
   }
 }
 
@@ -76,7 +78,6 @@ const mapDispatchToProps = (dispatch) => {
 class App extends Component {
   constructor() {
     super();
-    console.log(debounce)
   }
   
   updateDimensions = debounce(() => {
@@ -92,7 +93,6 @@ class App extends Component {
     },100, {trailing: true})
   
   componentDidMount() {
-    console.log("component mounted")
     this.updateDimensions();
     window.addEventListener("resize",this.updateDimensions)
   }
