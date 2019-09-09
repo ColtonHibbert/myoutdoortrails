@@ -168,13 +168,16 @@ export const sendLogIn = () => {
 }
 
 export const getTrails = () => {
+    console.log("start of getTrails")
     const lat = `${store.getState().searchLatitude}`;
     const lon = `${store.getState().searchLongitude}`;
+    console.log(lat,lon)
     fetch(`https://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${lon}&maxDistance=50&key=${HPKEY}`)
     .then(res => res.json())
     .then(data => {
         store.dispatch(getTrailsResponse(data))
     })
+    console.log("end of getTrails")
 }
 
 export const getTrailsResponse = (data) => {
@@ -186,16 +189,21 @@ export const getTrailsResponse = (data) => {
 }
 
 export const forwardGeocoding = () => {
-    const getSearchFieldURLValue = () => {
-        const newValue = store.getState().searchField.replace(" ", "%20")
-        return newValue;
+    console.log("start of forwardGeocoding")
+    if (store.getState().searchField) {
+        const getSearchFieldURLValue = () => {
+            const newValue = store.getState().searchField.replace(" ", "%20")
+            return newValue;
+        }
+        const searchFieldURLValue = getSearchFieldURLValue();
+        fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${searchFieldURLValue}.json?access_token=${MAPBOXKEY}`)
+        .then(res => res.json())
+        .then( data => {
+            store.dispatch(forwardGeocodingResponse(data))
+            console.log(data)
+        })
     }
-    const searchFieldURLValue = getSearchFieldURLValue();
-     fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${searchFieldURLValue}.json?access_token=${MAPBOXKEY}`)
-    .then(res => res.json())
-    .then( data => {
-        store.dispatch(forwardGeocodingResponse(data))
-    })
+    console.log("end of forwardGeocoding")
 }
 
 export const forwardGeocodingResponse = (data) => {

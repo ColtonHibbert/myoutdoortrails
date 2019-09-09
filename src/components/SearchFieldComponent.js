@@ -5,9 +5,14 @@ export const SEARCHFIELDCOMPONENTSTYLES = {
     PRIMARYBUTTON: "pa1 ma0 br1 bg-green white b--none",
     HEROSEARCHFIELD: "w-100 flex flex-row justify-center pv2 ph3",
 }
-//buttontype
-//searchfieldtype
-export const SearchFieldComponent = ({submitSearchFieldAction, sendSearchFieldAction, buttonstyle, searchfieldstyle }) => {
+export const SearchFieldComponent = ({submitSearchFieldAction, sendSearchFieldAction, forwardGeocoding, getTrails, buttonstyle, searchfieldstyle }) => {
+    
+        function onClickHandler(sendSearchFieldAction, forwardGeocoding, getTrails) {
+        console.log("runnin onclickhandler searchield component")
+        sendSearchFieldAction();
+        forwardGeocoding();
+        getTrails();
+    }
     return (
         <div className={searchfieldstyle}>
              <input 
@@ -18,7 +23,7 @@ export const SearchFieldComponent = ({submitSearchFieldAction, sendSearchFieldAc
             </input>
              <button
                 className={buttonstyle}
-                onClick={sendSearchFieldAction}
+                onClick={() => onClickHandler(sendSearchFieldAction, forwardGeocoding, getTrails)}
             >Search</button>
         </div>
     )
