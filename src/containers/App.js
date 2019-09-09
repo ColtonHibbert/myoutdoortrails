@@ -9,6 +9,7 @@ import Navigation from '../components/Navigation.js';
 import SignUp from '../components/SignUp.js';
 import LogIn from '../components/LogIn.js';
 import MobileMenu from '../components/MobileMenu.js';
+import MobileMenuItem from '../components/MobileMenuItem';
 import { SearchFieldComponent, SEARCHFIELDCOMPONENTSTYLES} from '../components/SearchFieldComponent.js';
 import Hero from '../components/Hero.js';
 import HeroSearch from '../components/HeroSearch.js';
@@ -38,7 +39,8 @@ import {
   getTrails,
   forwardGeocoding,
 } from '../services/actions.js';
-import MobileMenuItem from '../components/MobileMenuItem';;
+
+
 
 const mapStateToProps = (state) => {
   return {
@@ -61,17 +63,17 @@ const mapDispatchToProps = (dispatch) => {
   return {
     displaySignUpModalAction: () => dispatch(displaySignUpModalAction()),
     displayLogInModalAction: () => dispatch(displayLogInModalAction()),
+    displayMobileMenuAction: () => dispatch(displayMobileMenuAction()),
+    isLoggedIn: () => dispatch(isLoggedIn()),
     submitSearchFieldAction: (event) => dispatch(submitSearchFieldAction(event)),
     submitEmailAction: (event) => dispatch(submitEmailAction(event)),
     submitCryptedPasswordAction: (event) => dispatch(submitCryptedPasswordAction(event)),
     submitNameAction: (event) => dispatch(submitNameAction(event)),
-    isLoggedIn: () => dispatch(isLoggedIn()),
     signOut: () => {
       dispatch(isLoggedIn());
       dispatch(resetUser());
     },
     unDisplayMobileMenuAction: (payload) => dispatch(unDisplayMobileMenuAction(payload)),
-    displayMobileMenuAction: () => dispatch(displayMobileMenuAction()),
   }
 }
 
@@ -142,6 +144,8 @@ class App extends Component {
               sendSearchFieldAction={sendSearchFieldAction}
               buttonstyle={SEARCHFIELDCOMPONENTSTYLES.PRIMARYBUTTON}
               searchfieldstyle={SEARCHFIELDCOMPONENTSTYLES.MOBILEMENUSEARCHFIELD}
+              forwardGeocoding={forwardGeocoding}
+              getTrails={getTrails}
             />
             <MobileMenuItem text="Best Hikes"/>
             <MobileMenuItem text="Featured"/>
@@ -161,14 +165,14 @@ class App extends Component {
         }
         <Hero>
           <HeroSearch
-          getTrails={getTrails}
-          forwardGeocoding={forwardGeocoding}
           >
             <SearchFieldComponent 
             submitSearchFieldAction={this.props.submitSearchFieldAction}
             sendSearchFieldAction={sendSearchFieldAction}
             buttonstyle={SEARCHFIELDCOMPONENTSTYLES.PRIMARYBUTTON}
             searchfieldstyle={SEARCHFIELDCOMPONENTSTYLES.HEROSEARCHFIELD}
+            forwardGeocoding={forwardGeocoding}
+            getTrails={getTrails}
             />
           </HeroSearch>
         </Hero>

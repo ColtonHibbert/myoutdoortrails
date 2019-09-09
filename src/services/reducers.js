@@ -106,7 +106,7 @@ export const reducer = (state=initialState, action={}) => {
     }
     if(action.type === FORWARD_GEOCODING_RESPONSE) {
         return {...state, 
-            forwardGeocodingResponse: action.forwardGeocodingResponsePayload ,
+            forwardGeocodingResponse: action.forwardGeocodingResponsePayload,
             searchLatitude: action.forwardGeocodingResponsePayload.features[0].center[1] ,
             searchLongitude: action.forwardGeocodingResponsePayload.features[0].center[0]
         }

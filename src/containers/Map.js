@@ -24,25 +24,33 @@ class Map extends Component {
     componentDidMount() {
     //  console.log("should start this.map")
         this.map = new mapboxgl.Map({
-                container: this.mapContainer,
-                center: [this.props.searchLongitude, this.props.searchLatitude],
-                zoom: 13,
-                style: "mapbox://styles/mapbox/outdoors-v10",
-                hash: true,
-                transformRequest: (url, resourceType)=> {
-                    if(resourceType === 'Source' && url.startsWith('http://myHost')) {
-                        return {
-                            url: url.replace('http', 'https'),
-                            headers: { 'my-custom-header': true},
-                            credentials: 'include'  // Include cookies for cross-origin requests
-                        }
+            container: this.mapContainer,
+            center: [this.props.searchLongitude, this.props.searchLatitude],
+            zoom: 10,
+            style: "mapbox://styles/mapbox/outdoors-v10",
+            hash: true,
+            transformRequest: (url, resourceType)=> {
+                if(resourceType === 'Source' && url.startsWith('http://myHost')) {
+                    return {
+                        url: url.replace('http', 'https'),
+                        headers: { 'my-custom-header': true},
+                        credentials: 'include'  // Include cookies for cross-origin requests
                     }
                 }
-            }) ;
-            console.log("should load map")
-            console.log(this.map)
-            this.map.on('styledataloading', () =>  {
-                console.log("should add layer bro")
+            }
+        });
+        console.log("should load map")
+        console.log(this.map)
+        this.map.on('load', () =>  {
+            console.log('load just ran bro')
+            if(this.props.trailsArray[0]) {
+                this.fillFeaturesHikingListArr();
+                console.log(this.featuresHikingListArr)
+                const mapLayer = this.map.getLayer('points');
+                if(mapLayer !== undefined ) {
+                    this.map.removeLayer('points');
+                    this.map.removeSource('points');
+                }
                 this.map.addLayer({
                     "id": "points",
                     "type": "symbol",
@@ -50,7 +58,7 @@ class Map extends Component {
                     "type": "geojson",
                     "data": {
                     "type": "FeatureCollection",
-                    "features": this.props.trailsArray,
+                    "features": this.featuresHikingListArr,
                     }
                     },
                     "layout": {
@@ -60,9 +68,35 @@ class Map extends Component {
                     "text-offset": [0, 0.6],
                     "text-anchor": "top"
                     }
-                });  
-            })
-        
+                });
+            }
+            // const mapLayer = this.map.getLayer('points');
+            // if(mapLayer !== undefined ) {
+            //     console.log("remove load points")
+            //     this.map.removeLayer('points');
+            //     this.map.removeSource('points');
+            // }
+            //     console.log("should add layer bro")
+            //     this.fillFeaturesHikingListArr()
+            //     this.map.addLayer({
+            //         "id": "points",
+            //         "type": "symbol",
+            //         "source": {
+            //         "type": "geojson",
+            //         "data": {
+            //         "type": "FeatureCollection",
+            //         "features": this.FeaturesHikingListArr,
+            //         }
+            //         },
+            //         "layout": {
+            //         "icon-image": "{icon}-15",
+            //         "text-field": "{title}",
+            //         "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+            //         "text-offset": [0, 0.6],
+            //         "text-anchor": "top"
+            //         }
+            //     });  
+        })
     }
 
     featuresHikingListArr = [];
