@@ -200,10 +200,12 @@ export const forwardGeocoding = () => {
         .then(res => res.json())
         .then( data => {
             store.dispatch(forwardGeocodingResponse(data))
+            console.log("below is the forwardGeocoding data")
             console.log(data)
         })
     }
     console.log("end of forwardGeocoding")
+    return;
 }
 
 export const forwardGeocodingResponse = (data) => {
