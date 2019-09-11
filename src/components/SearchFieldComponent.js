@@ -25,6 +25,8 @@ export const SearchFieldComponent = ({submitSearchFieldAction, sendSearchFieldAc
                 className={buttonstyle}
                 onClick={() => onClickHandler(sendSearchFieldAction, forwardGeocoding, getTrails)}
             >Search</button>
+            <div onClick={forwardGeocoding}>forwardGeocoding</div>
+            <div onClick={getTrails}>getTrails</div>
         </div>
     )
 }
