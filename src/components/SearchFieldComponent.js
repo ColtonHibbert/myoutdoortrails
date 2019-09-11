@@ -7,12 +7,25 @@ export const SEARCHFIELDCOMPONENTSTYLES = {
 }
 export const SearchFieldComponent = ({submitSearchFieldAction, sendSearchFieldAction, forwardGeocoding, getTrails, buttonstyle, searchfieldstyle }) => {
     
-        function onClickHandler(sendSearchFieldAction, forwardGeocoding, getTrails) {
-        console.log("runnin onclickhandler searchield component")
+        async function onClickHandler(sendSearchFieldAction, forwardGeocoding, getTrails) {
+        console.log("running onclickhandler on searchfield component")
         sendSearchFieldAction();
-        forwardGeocoding();
-        getTrails();
+       await forwardGeocoding();
+       getTrails();
     }
+    
+        async function f() {
+
+            let promise = new Promise((resolve, reject) => {
+              setTimeout(() => resolve("done!"), 1000)
+            });
+          
+            let result = await promise; // wait till the promise resolves (*)
+          
+            alert(result); // "done!"
+          }
+          
+    
     return (
         <div className={searchfieldstyle}>
              <input 
@@ -27,6 +40,7 @@ export const SearchFieldComponent = ({submitSearchFieldAction, sendSearchFieldAc
             >Search</button>
             <div onClick={forwardGeocoding}>forwardGeocoding</div>
             <div onClick={getTrails}>getTrails</div>
+            <button onClick={f}></button>
         </div>
     )
 }
