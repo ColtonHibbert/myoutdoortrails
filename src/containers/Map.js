@@ -26,7 +26,7 @@ class Map extends Component {
         this.map = new mapboxgl.Map({
             container: this.mapContainer,
             center: [this.props.searchLongitude, this.props.searchLatitude],
-            zoom: 10,
+            zoom: 9,
             style: "mapbox://styles/mapbox/outdoors-v10",
             hash: true,
             transformRequest: (url, resourceType)=> {

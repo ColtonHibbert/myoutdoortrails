@@ -5,27 +5,13 @@ export const SEARCHFIELDCOMPONENTSTYLES = {
     PRIMARYBUTTON: "pa1 ma0 br1 bg-green white b--none",
     HEROSEARCHFIELD: "w-100 flex flex-row justify-center pv2 ph3",
 }
-export const SearchFieldComponent = ({submitSearchFieldAction, sendSearchFieldAction, forwardGeocoding, getTrails, buttonstyle, searchfieldstyle }) => {
+export const SearchFieldComponent = ({apiFunctions, submitSearchFieldAction, sendSearchFieldAction, buttonstyle, searchfieldstyle }) => {
     
-        async function onClickHandler(sendSearchFieldAction, forwardGeocoding, getTrails) {
-        console.log("running onclickhandler on searchfield component")
-        sendSearchFieldAction();
-       await forwardGeocoding();
-       getTrails();
+    function onClickHandler(sendSearchFieldAction, apiFunctions) {
+    sendSearchFieldAction();
+    apiFunctions();
     }
-    
-        async function f() {
-
-            let promise = new Promise((resolve, reject) => {
-              setTimeout(() => resolve("done!"), 1000)
-            });
           
-            let result = await promise; // wait till the promise resolves (*)
-          
-            alert(result); // "done!"
-          }
-          
-    
     return (
         <div className={searchfieldstyle}>
              <input 
@@ -36,11 +22,8 @@ export const SearchFieldComponent = ({submitSearchFieldAction, sendSearchFieldAc
             </input>
              <button
                 className={buttonstyle}
-                onClick={() => onClickHandler(sendSearchFieldAction, forwardGeocoding, getTrails)}
+                onClick={() => onClickHandler(sendSearchFieldAction, apiFunctions)}
             >Search</button>
-            <div onClick={forwardGeocoding}>forwardGeocoding</div>
-            <div onClick={getTrails}>getTrails</div>
-            <button onClick={f}></button>
         </div>
     )
 }
