@@ -38,6 +38,7 @@ import {
   unDisplayMobileMenuAction,
   getTrails,
   forwardGeocoding,
+  apiFunctions,
 } from '../services/actions.js';
 
 
@@ -102,8 +103,9 @@ class App extends Component {
   checkResponse() {
     const mapboxdata = store.getState().forwardGeocodingResponse.features;
     console.log(mapboxdata);
-  }
+  } 
 
+ 
   render() {
     return ( 
       <div 
@@ -146,6 +148,7 @@ class App extends Component {
               searchfieldstyle={SEARCHFIELDCOMPONENTSTYLES.MOBILEMENUSEARCHFIELD}
               forwardGeocoding={forwardGeocoding}
               getTrails={getTrails}
+              apiFunctions={apiFunctions}
             />
             <MobileMenuItem text="Best Hikes"/>
             <MobileMenuItem text="Featured"/>
@@ -173,11 +176,14 @@ class App extends Component {
             searchfieldstyle={SEARCHFIELDCOMPONENTSTYLES.HEROSEARCHFIELD}
             forwardGeocoding={forwardGeocoding}
             getTrails={getTrails}
+            apiFunctions={apiFunctions}
             />
           </HeroSearch>
         </Hero>
         <CenterSection>
-          <HikesNearYouList />
+          <HikesNearYouList 
+            trailsArray={this.props.trailsArray}
+          />
           <Map />
         </CenterSection>
         <RecommendedHikesList />

@@ -1,5 +1,7 @@
-
-
+//black is difficult
+//blueBlack is intermediate
+//blue is easy 
+//use smallMed
 export const featuredArray = [
     {   
         ascent: 1390,
@@ -252,6 +254,8 @@ export const featuredArray = [
         url: "https://www.hikingproject.com/trail/7002256/devils-garden-full-lollipop" 
     }
 ]
+
+
 
 export const initialBoulderCoArray = [
     {
