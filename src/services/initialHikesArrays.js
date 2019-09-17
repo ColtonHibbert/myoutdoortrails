@@ -257,6 +257,16 @@ export const featuredArray = [
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const initialBoulderCoArray = [
     {
         ascent: 2000,
