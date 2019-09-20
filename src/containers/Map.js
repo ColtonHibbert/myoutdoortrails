@@ -155,8 +155,8 @@ class Map extends Component {
 
     render() {
         return (
-            <div className="flex w-100">
-                <div className="flex w-100 vh-75 bg-white"
+            <div className="flex w-100 bg-white">
+                <div className="flex w-100 vh-50 ma1 bg-white"
                     ref={el => this.mapContainer = el}
                 >
                 </div> 

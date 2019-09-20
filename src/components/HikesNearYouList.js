@@ -1,12 +1,12 @@
 import React from 'react';
 
-//{trailsArray[0].imgSmallMed}
 export const HikesNearYouList = ({trailsArray}) => {
     console.log(trailsArray[0].imgsmallMed)
     console.log(trailsArray)
     return (
-        <div className="w-100 vh-75 flex justify-center">
-            <div className="w-80 h5 flex flex-row ma0 pa0 overflow-x-scroll
+        <div className="w-100 flex flex-column justify-center items-center">
+            <div className="tc f4 bg-green white">Hikes near this location</div>
+            <div className="w-80 flex flex-row ma0 pa0 overflow-x-scroll br3
             flex-row-ns
             flex-row-m 
             flex-column-l
@@ -31,15 +31,22 @@ export const HikesNearYouList = ({trailsArray}) => {
                         return text;
                     })(trailItem)
                     return (
-                        <div className="vw-80 h5 min-width-100 ma0 pa0 ba bg-white">
-                            <img className="pa0" src={trailItem.imgSmallMed}></img>
-                            <div>{difficulty}</div>
-                            <div>more info</div>
+                        <div className="vw-80 min-width-100 ma0 pa0 ba bg-white">
+                            <img className="pa0 vh-25 w-100" src={trailItem.imgSmallMed}></img>
+                            <div className="h4 flex flex-column justify-between">
+                                <div className="flex">{trailItem.name}</div>
+                                <div className="f5">{difficulty}</div>
+                                <div className="flex flex-row">
+                                    <div className="pr2 f6">Length:{trailItem.length} miles</div>
+                                    <div className="f6">Ascent:{trailItem.ascent} feet</div>
+                                </div>
+                                <div className="f6">Rating:{trailItem.stars}</div>
+                                <div className="f6">Location:{trailItem.location}</div>
+                            </div>
                         </div>
                     )
                 })
             }
-                
             </div>
         </div>
     )

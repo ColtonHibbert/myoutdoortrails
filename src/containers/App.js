@@ -186,7 +186,7 @@ class App extends Component {
           />
           <Map />
         </CenterSection>
-        <RecommendedHikesList />
+        <RecommendedHikesList featuredHikesArray={this.props.featuredHikesArray}/>
         <LowerMainPageContent>
           <MainPageArticles />
           <GearReviews />

@@ -9,7 +9,7 @@ export const CenterSection = (props) => {
         flex-row-l ma3-l
         ">
             <div 
-            className="w-100 order-1 flex flex-row
+            className="w-100 order-1 flex flex-row pt3
             order-1-ns
             order-1-m flex-column-m
             w-25-l order-0-l flex-row-l
