@@ -15,7 +15,7 @@ import Hero from '../components/Hero.js';
 import HeroSearch from '../components/HeroSearch.js';
 import CenterSection from '../components/CenterSection.js';
 import HikesNearYouList from '../components/HikesNearYouList.js';
-import RecommendedHikesList from '../components/RecommendedHikesList.js';
+import FeaturedHikes from '../components/FeaturedHikes.js';
 import Map from './Map.js';
 import LowerMainPageContent from '../components/LowerMainPageContent.js';
 import GearReviews from '../components/GearReviews.js';
@@ -150,9 +150,7 @@ class App extends Component {
               getTrails={getTrails}
               apiFunctions={apiFunctions}
             />
-            <MobileMenuItem text="Best Hikes"/>
-            <MobileMenuItem text="Featured"/>
-            <MobileMenuItem text="Forum"/>
+            <MobileMenuItem text="Featured Hikes" link="#featuredhikes"/>
             {
               !this.props.loggedIn ?
               <div className="w-100">
@@ -186,7 +184,7 @@ class App extends Component {
           />
           <Map />
         </CenterSection>
-        <RecommendedHikesList featuredHikesArray={this.props.featuredHikesArray}/>
+        <FeaturedHikes featuredHikesArray={this.props.featuredHikesArray}/>
         <LowerMainPageContent>
           <MainPageArticles />
           <GearReviews />
