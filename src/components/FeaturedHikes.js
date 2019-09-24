@@ -1,8 +1,8 @@
 import React from 'react';
 
-export const RecommendedHikesList = ({featuredHikesArray}) => {
+export const FeaturedHikes = ({featuredHikesArray}) => {
     return (
-        <div className="w-100 flex flex-column justify-center items-center pt4">
+        <div id="featuredhikes" className="w-100 flex flex-column justify-center items-center pt4">
             <div className="tc f4 bg-green white">Check out our featured hikes</div>
             <div className="w-80 flex flex-row ma0 pa0 overflow-x-scroll br3
             flex-row-ns
@@ -29,7 +29,9 @@ export const RecommendedHikesList = ({featuredHikesArray}) => {
                         return text;
                     })(trailItem)
                     return (
-                        <div className="vw-80 min-width-100 ma0 pa0 ba bg-white">
+                        <div className="vw-80 min-width-100 ma0 pa0 ba bg-white"
+                           
+                        >
                             <img className="pa0 vh-25 w-100" src={trailItem.imgSmallMed}></img>
                             <div className="h4 flex flex-column justify-between">
                                 <div className="flex">{trailItem.name}</div>
@@ -50,4 +52,4 @@ export const RecommendedHikesList = ({featuredHikesArray}) => {
     )
 }
 
-export default RecommendedHikesList;
+export default FeaturedHikes;

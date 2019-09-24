@@ -39,9 +39,7 @@ export const Navigation = ({ displaySignUpModalAction, displayLogInModalAction, 
                     className="w-100 h2 mt3 flex items-center justify-center tc
                     justify-end-l
                     ">
-                        <div className="link dim dark-gray f6 f5-l dib mr3 mr4-l pointer" title="Best Hikes">Best Hikes</div>
-                        <div className="link dim dark-gray f6 f5-l dib mr3 mr4-l pointer" title="Featured">Featured</div>
-                        <div className="link dim dark-gray f6 f5-l dib mr3 mr4-l pointer" title="Forum">Forum</div>
+                        <div className="link dim dark-gray f6 f5-l dib mr3 mr4-l pointer" title="Featured"><a href="#featuredhikes" className="no-underline dark-gray">Featured Hikes</a></div>
                     {
                         loggedIn ? 
                         <div className="link dim dark-gray f6 f5-l dib" 

@@ -17,6 +17,7 @@ export const SearchFieldComponent = ({apiFunctions, submitSearchFieldAction, sen
              <input 
                 className="h2 w-70 w-60-ns w-50-l bg-white b--none"
                 type="text"
+                spellCheck="false"
                 onChange={submitSearchFieldAction}
             >
             </input>
