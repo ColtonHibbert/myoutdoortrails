@@ -6,7 +6,7 @@ export const LogIn  = ({displayLogInModalAction, sendLogIn, submitEmailAction, s
             <div className="w-100 min-vh-100 fixed z-4 bg-gray o-70">
             </div>
             <div className="w-80 w-60-ns w-50-m w-30-l absolute z-5 bg-white"
-                style={{ top:'10%', left:'50%', transform:'translate(-50%)' }}
+                style={{ top:'5%', left:'50%', transform:'translate(-50%)' }}
             >   
                 <div className="w-100 flex flex-row justify-end">
                     <div 

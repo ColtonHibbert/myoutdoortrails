@@ -2,7 +2,7 @@ import React from 'react';
 import { store } from '../index.js';
 
 
-export const Navigation = ({ displaySignUpModalAction, displayLogInModalAction, signOut, loggedIn, isMobile, displayMobileMenuAction }) => {
+export const Navigation = ({ displaySignUpModalAction, displayLogInModalAction, signOut, loggedIn, isMobile, displayMobileMenuAction, name }) => {
     return (
         <div>
             <nav className="
@@ -42,9 +42,12 @@ export const Navigation = ({ displaySignUpModalAction, displayLogInModalAction, 
                         <div className="link dim dark-gray f6 f5-l dib mr3 mr4-l pointer" title="Featured"><a href="#featuredhikes" className="no-underline dark-gray">Featured Hikes</a></div>
                     {
                         loggedIn ? 
-                        <div className="link dim dark-gray f6 f5-l dib" 
-                            onClick={signOut}
-                        >Sign Out</div>
+                        <div className="flex flex-row items-center">
+                            <div className="link dim dark-gray f6 f5-l dib pointer" 
+                                onClick={signOut}
+                            >Sign Out</div>
+                            <div className="flex self-end pl3">Welcome {name}</div>
+                        </div>
                         :
                         <div className="flex">
                             <div

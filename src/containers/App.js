@@ -137,10 +137,16 @@ class App extends Component {
           signOut={this.props.signOut}
           loggedIn={this.props.loggedIn}
           isMobile={this.props.isMobile}
+          name={this.props.name}
         />
         {
           store.getState().displayMobileMenu ? 
           <MobileMenu> 
+            {
+            this.props.loggedIn ?
+                <div className="flex self-end white pa2">Welcome {this.props.name}</div>
+            : ''
+            }
             <SearchFieldComponent 
               submitSearchFieldAction={this.props.submitSearchFieldAction}
               sendSearchFieldAction={sendSearchFieldAction}

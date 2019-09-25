@@ -8,8 +8,8 @@ export const HikesNearYouList = ({trailsArray}) => {
             <div className="tc f4 bg-green white">Hikes near this location</div>
             <div className="w-80 flex flex-row ma0 pa0 overflow-x-scroll br3
             flex-row-ns
-            flex-row-m 
-            flex-column-l
+            flex-row-m w-50-m
+            w-100-l vh-75-l flex-column-l items-center-l overflow-y-scroll-l 
             ">
             {
                 trailsArray.map((trailItem) => {

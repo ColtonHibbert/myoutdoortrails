@@ -2,7 +2,7 @@ import React from 'react';
 
 export const MobileMenuItem = ({text, clickFunction, link }) => {
     return (
-        <div className="w-100"
+        <div className="w-100 pointer"
             onClick={clickFunction}
         >
             <a href={link} className="w-100 w-100 flex flex-row justify-between items-center pv2 ph3 dim pointer bb b--white-40 no-underline">
