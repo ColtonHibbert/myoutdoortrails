@@ -6,8 +6,8 @@ export const FeaturedHikes = ({featuredHikesArray}) => {
             <div className="tc f4 bg-green white">Check out our featured hikes</div>
             <div className="w-80 flex flex-row ma0 pa0 overflow-x-scroll br3
             flex-row-ns
-            flex-row-m 
-            flex-column-l
+            flex-row-m w-50-m
+            flex-row-l w-30-l
             ">
             {
                 featuredHikesArray.map((trailItem) => {
@@ -29,8 +29,8 @@ export const FeaturedHikes = ({featuredHikesArray}) => {
                         return text;
                     })(trailItem)
                     return (
-                        <div className="vw-80 min-width-100 ma0 pa0 ba bg-white"
-                           
+                        <div className="w-80 min-width-100 ma0 pa0 ba bg-white
+                        w-50-m"
                         >
                             <img className="pa0 vh-25 w-100" src={trailItem.imgSmallMed}></img>
                             <div className="h4 flex flex-column justify-between">
