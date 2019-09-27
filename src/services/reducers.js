@@ -14,6 +14,7 @@ import {
     UN_DISPLAY_MOBILE_MENU,
     FORWARD_GEOCODING_RESPONSE,
     GET_TRAILS_RESPONSE,
+    RE_CENTER_MAP,
 } from './constants.js';
 
 import { initialBoulderCoArray, featuredArray } from './initialHikesArrays.js';
@@ -116,6 +117,13 @@ export const reducer = (state=initialState, action={}) => {
             ...state,
             getTrailsResponse: action.getTrailsResponsePayload,
             trailsArray: action.trailsArrayPayload
+        }
+    }
+    if(action.type === RE_CENTER_MAP) {
+        return {
+            ...state,
+            searchLatitude: action.searchLatitudePayload,
+            searchLongitude: action.searchLongitudePayload
         }
     }
     return state;

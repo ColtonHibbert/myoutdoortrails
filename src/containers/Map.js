@@ -22,7 +22,6 @@ class Map extends Component {
     }
    
     componentDidMount() {
-    //  console.log("should start this.map")
         this.map = new mapboxgl.Map({
             container: this.mapContainer,
             center: [this.props.searchLongitude, this.props.searchLatitude],
@@ -70,32 +69,6 @@ class Map extends Component {
                     }
                 });
             }
-            // const mapLayer = this.map.getLayer('points');
-            // if(mapLayer !== undefined ) {
-            //     console.log("remove load points")
-            //     this.map.removeLayer('points');
-            //     this.map.removeSource('points');
-            // }
-            //     console.log("should add layer bro")
-            //     this.fillFeaturesHikingListArr()
-            //     this.map.addLayer({
-            //         "id": "points",
-            //         "type": "symbol",
-            //         "source": {
-            //         "type": "geojson",
-            //         "data": {
-            //         "type": "FeatureCollection",
-            //         "features": this.FeaturesHikingListArr,
-            //         }
-            //         },
-            //         "layout": {
-            //         "icon-image": "{icon}-15",
-            //         "text-field": "{title}",
-            //         "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
-            //         "text-offset": [0, 0.6],
-            //         "text-anchor": "top"
-            //         }
-            //     });  
         })
     }
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { send } from 'q';
 
 export const SEARCHFIELDCOMPONENTSTYLES = {
     MOBILEMENUSEARCHFIELD: "w-100 flex flex-row justify-center pv2 ph3 bb b--white-40",
@@ -19,6 +20,12 @@ export const SearchFieldComponent = ({apiFunctions, submitSearchFieldAction, sen
                 type="text"
                 spellCheck="false"
                 onChange={submitSearchFieldAction}
+                onKeyPress={(event) => {
+                    if(event.key === "Enter") {
+                        sendSearchFieldAction();
+                        apiFunctions();
+                    }
+                }}
             >
             </input>
              <button

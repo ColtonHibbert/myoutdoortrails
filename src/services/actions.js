@@ -16,6 +16,7 @@ import {
     UN_DISPLAY_MOBILE_MENU,
     FORWARD_GEOCODING_RESPONSE,
     GET_TRAILS_RESPONSE,
+    RE_CENTER_MAP,
 } from './constants.js';
 import { HPKEY, MAPBOXKEY } from '../config/config.js';
 
@@ -115,7 +116,6 @@ export const unDisplayMobileMenuAction = (payload) => {
 }
 
 
-// http:localhost:3001/searchfield
 
 export const sendSearchFieldAction = () => {
     fetch('https://desolate-bayou-16919.herokuapp.com/searchfield', {
@@ -248,4 +248,14 @@ export const forwardGeocodingResponse = (data) => {
         forwardGeocodingResponsePayload: data
     }
 }
+
+export const reCenterMap = (data)  => {
+    return {
+        type: RE_CENTER_MAP,
+        searchLatitudePayload: data.latitude,
+        searchLongitudePayload: data.longitude,
+    }
+}
+
+
 
