@@ -39,6 +39,7 @@ import {
   getTrails,
   forwardGeocoding,
   apiFunctions,
+  reCenterMap,
 } from '../services/actions.js';
 
 
@@ -75,6 +76,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(resetUser());
     },
     unDisplayMobileMenuAction: (payload) => dispatch(unDisplayMobileMenuAction(payload)),
+    reCenterMap: (payload) => dispatch(reCenterMap(payload)),
   }
 }
 
@@ -187,10 +189,14 @@ class App extends Component {
         <CenterSection>
           <HikesNearYouList 
             trailsArray={this.props.trailsArray}
+            reCenterMap={this.props.reCenterMap}
           />
           <Map />
         </CenterSection>
-        <FeaturedHikes featuredHikesArray={this.props.featuredHikesArray}/>
+        <FeaturedHikes 
+          featuredHikesArray={this.props.featuredHikesArray}
+          reCenterMap={this.props.reCenterMap}
+        />
         <LowerMainPageContent>
           <MainPageArticles />
           <GearReviews />

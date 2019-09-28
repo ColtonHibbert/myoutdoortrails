@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const HikesNearYouList = ({trailsArray}) => {
+export const HikesNearYouList = ({trailsArray, reCenterMap }) => {
     console.log(trailsArray[0].imgsmallMed)
     console.log(trailsArray)
     return (
@@ -31,7 +31,10 @@ export const HikesNearYouList = ({trailsArray}) => {
                         return text;
                     })(trailItem)
                     return (
-                        <div className="vw-80 min-width-100 ma0 pa0 ba bg-white">
+                        <div 
+                        className="vw-80 min-width-100 ma0 pa0 ba bg-white pointer"
+                        onClick={() => reCenterMap(trailItem)}
+                        >
                             <img className="pa0 vh-25 w-100" src={trailItem.imgSmallMed}></img>
                             <div className="h4 flex flex-column justify-between">
                                 <div className="flex">{trailItem.name}</div>
