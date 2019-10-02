@@ -28,6 +28,7 @@ class Map extends Component {
             zoom: 9,
             style: "mapbox://styles/mapbox/outdoors-v10",
             hash: true,
+            attributionControl: true,
             transformRequest: (url, resourceType)=> {
                 if(resourceType === 'Source' && url.startsWith('http://myHost')) {
                     return {
@@ -37,7 +38,8 @@ class Map extends Component {
                     }
                 }
             }
-        });
+        })
+        
         console.log("should load map")
         console.log(this.map)
         this.map.on('load', () =>  {
