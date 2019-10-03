@@ -118,7 +118,7 @@ export const unDisplayMobileMenuAction = (payload) => {
 
 
 export const sendSearchFieldAction = () => {
-    fetch('https://desolate-bayou-16919.herokuapp.com/searchfield', {
+    fetch('https://myoutdoortrailsnode.herokuapp.com/searchfield', {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
@@ -129,7 +129,7 @@ export const sendSearchFieldAction = () => {
 }
 
 export const sendSignUpAction = () => {
-    fetch('https://desolate-bayou-16919.herokuapp.com/signup', {
+    fetch('https://myoutdoortrailsnode.herokuapp.com/signup', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
@@ -149,7 +149,7 @@ export const sendSignUpAction = () => {
 }
 
 export const sendLogIn = () => {
-    fetch('https://desolate-bayou-16919.herokuapp.com/login', {
+    fetch('https://myoutdoortrailsnode.herokuapp.com/login', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
@@ -172,7 +172,7 @@ export const getTrails = () => {
     const lat = `${store.getState().searchLatitude}`;
     const lon = `${store.getState().searchLongitude}`;
     console.log(lat,lon)
-    fetch(`https://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${lon}&maxDistance=50&key=${HPKEY}`)
+    fetch(`https://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${lon}&maxDistance=50&key=${process.env.HPKEY}`)
     .then(res => res.json())
     .then(data => {
         store.dispatch(getTrailsResponse(data))
@@ -197,7 +197,7 @@ export const forwardGeocoding = () => {
             return newValue;
         }
         const searchFieldURLValue = getSearchFieldURLValue();
-        fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${searchFieldURLValue}.json?access_token=${MAPBOXKEY}`)
+        fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${searchFieldURLValue}.json?access_token=${process.env.MAPBOXKEY}`)
         .then(res => res.json())
         .then( data => {
             store.dispatch(forwardGeocodingResponse(data))
@@ -219,7 +219,7 @@ export const apiFunctions = () => {
             return newValue;
         }
         const searchFieldURLValue = getSearchFieldURLValue();
-        await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${searchFieldURLValue}.json?access_token=${MAPBOXKEY}`)
+        await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${searchFieldURLValue}.json?access_token=${process.env.MAPBOXKEY}`)
         .then(res => res.json())
         .then( data => {
             store.dispatch(forwardGeocodingResponse(data))
@@ -233,7 +233,7 @@ export const apiFunctions = () => {
     const lat = `${store.getState().searchLatitude}`;
     const lon = `${store.getState().searchLongitude}`;
     console.log(lat,lon)
-    await fetch(`https://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${lon}&maxDistance=50&key=${HPKEY}`)
+    await fetch(`https://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${lon}&maxDistance=50&key=${process.env.HPKEY}`)
     .then(res => res.json())
     .then(data => {
         store.dispatch(getTrailsResponse(data))
