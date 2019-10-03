@@ -18,7 +18,7 @@ import {
     GET_TRAILS_RESPONSE,
     RE_CENTER_MAP,
 } from './constants.js';
-import { HPKEY, MAPBOXKEY } from '../config/config.js';
+//import { HPKEY, MAPBOXKEY } from '../config/config.js';
 
 
 

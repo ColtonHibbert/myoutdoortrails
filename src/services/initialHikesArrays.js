@@ -2,6 +2,7 @@
 //blueBlack is intermediate
 //blue is easy 
 //use smallMed
+
 export const featuredArray = [
     {
         ascent: 305,

@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { store } from '../index.js';
 import mapboxgl from 'mapbox-gl';
-import { MAPBOXKEY } from '../config/config.js';
-mapboxgl.accessToken = MAPBOXKEY;
+//import { MAPBOXKEY } from '../config/config.js';
+mapboxgl.accessToken = process.env.MAPBOXKEY;
 
 const mapStateToProps = (state) => {
     return {
