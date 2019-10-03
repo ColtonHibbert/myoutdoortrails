@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { store } from '../index.js';
 import mapboxgl from 'mapbox-gl';
 //import { MAPBOXKEY } from '../config/config.js'; 
-//mapboxgl.accessToken = process.env.MAPBOXKEY;
+mapboxgl.accessToken = JSON.stringify(process.env.MAPBOXKEY);
 
 const mapStateToProps = (state) => {
     return {
@@ -23,7 +23,6 @@ class Map extends Component {
    
     componentDidMount() {
         this.map = new mapboxgl.Map({
-            accessToken: process.env.MAPBOXKEY,
             container: this.mapContainer,
             center: [this.props.searchLongitude, this.props.searchLatitude],
             zoom: 9,
