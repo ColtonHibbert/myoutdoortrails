@@ -173,7 +173,7 @@ export const getTrails = () => {
     const lat = `${store.getState().searchLatitude}`;
     const lon = `${store.getState().searchLongitude}`;
     console.log(lat,lon)
-    await fetch('https://myoutdoortrailsnode.herokuapp.com/hikingproject', {
+    fetch('https://myoutdoortrailsnode.herokuapp.com/hikingproject', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
