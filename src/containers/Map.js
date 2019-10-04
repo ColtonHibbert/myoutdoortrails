@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { store } from '../index.js';
 import mapboxgl from 'mapbox-gl';
-//import { MAPBOXKEY } from '../config/config.js'; 
-mapboxgl.accessToken = JSON.stringify(process.env.MAPBOXKEY);
+const publicMapBoxToken = "pk.eyJ1IjoiY29kaW5nd2l0aGNvbHRvbiIsImEiOiJjano0OXg5MzYwYzQyM2dtbDdvajRlMGg3In0.tIhLprKwtyrZ0EM2tG2J4w"
+mapboxgl.accessToken = publicMapBoxToken;
 
 const mapStateToProps = (state) => {
     return {
