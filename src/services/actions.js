@@ -179,7 +179,8 @@ export const getTrails = () => {
         body: JSON.stringify({
             lat: lat,
             lon: lon
-        })
+        }),
+        mode: "no-cors"
     })
     .then(res => res.json())
     .then(data => {
@@ -256,7 +257,8 @@ export const apiFunctions = () => {
         body: JSON.stringify({
             lat: lat,
             lon: lon
-        })
+        }),
+        mode: "no-cors"
     })
     .then(res => res.json())
     .then(data => {
