@@ -176,11 +176,11 @@ export const getTrails = () => {
     fetch('https://myoutdoortrailsnode.herokuapp.com/hikingproject', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
+        mode: "no-cors",
         body: JSON.stringify({
             lat: lat,
             lon: lon
-        }),
-        mode: "no-cors"
+        })
     })
     .then(res => res.json())
     .then(data => {
@@ -254,11 +254,11 @@ export const apiFunctions = () => {
     await fetch('https://myoutdoortrailsnode.herokuapp.com/hikingproject', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
+        mode: "no-cors",
         body: JSON.stringify({
             lat: lat,
             lon: lon
-        }),
-        mode: "no-cors"
+        })
     })
     .then(res => res.json())
     .then(data => {
