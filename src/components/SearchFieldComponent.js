@@ -1,5 +1,4 @@
 import React from 'react';
-import { send } from 'q';
 
 export const SEARCHFIELDCOMPONENTSTYLES = {
     MOBILEMENUSEARCHFIELD: "w-100 flex flex-row justify-center pv2 ph3 bb b--white-40",
