@@ -53,5 +53,3 @@ export const FeaturedHikes = ({featuredHikesArray }) => {
         </div>
     )
 }
-
-export default FeaturedHikes;

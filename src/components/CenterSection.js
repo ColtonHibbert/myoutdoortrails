@@ -30,4 +30,3 @@ export const CenterSection = (props) => {
     )
 }
 
-export default CenterSection;

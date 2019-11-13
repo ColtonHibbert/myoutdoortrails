@@ -46,4 +46,3 @@ export const LogIn  = ({displayLogInModalAction, sendLogIn, submitEmailAction, s
     )
 }
 
-export default LogIn;

@@ -53,4 +53,3 @@ export const SignUp = ({displaySignUpModalAction, submitEmailAction, submitCrypt
     )
 }
 
-export default SignUp;

@@ -8,4 +8,3 @@ export const LowerMainPageContent = (props) => {
     )
 }
 
-export default LowerMainPageContent;

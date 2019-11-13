@@ -35,4 +35,3 @@ export const SearchFieldComponent = ({apiFunctions, submitSearchFieldAction, sen
     )
 }
 
-export default SearchFieldComponent;

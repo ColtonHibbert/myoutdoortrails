@@ -13,4 +13,3 @@ export const MobileMenuItem = ({text, clickFunction, link }) => {
     )
 }
 
-export default MobileMenuItem;

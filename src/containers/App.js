@@ -5,22 +5,22 @@ import 'redux';
 import { connect } from 'react-redux';
 import { store } from '../index.js';
 import debounce from 'lodash.debounce';
-import Navigation from '../components/Navigation.js';
-import SignUp from '../components/SignUp.js';
-import LogIn from '../components/LogIn.js';
-import MobileMenu from '../components/MobileMenu.js';
-import MobileMenuItem from '../components/MobileMenuItem';
-import { SearchFieldComponent, SEARCHFIELDCOMPONENTSTYLES} from '../components/SearchFieldComponent.js';
-import Hero from '../components/Hero.js';
-import HeroSearch from '../components/HeroSearch.js';
-import CenterSection from '../components/CenterSection.js';
-import HikesNearYouList from '../components/HikesNearYouList.js';
-import FeaturedHikes from '../components/FeaturedHikes.js';
+import { Navigation } from '../components/Navigation.js';
+import { SignUp } from '../components/SignUp.js';
+import { LogIn } from '../components/LogIn.js';
+import { MobileMenu } from '../components/MobileMenu.js';
+import { MobileMenuItem } from '../components/MobileMenuItem';
+import { SearchFieldComponent, SEARCHFIELDCOMPONENTSTYLES } from '../components/SearchFieldComponent.js';
+import { Hero } from '../components/Hero.js';
+import { HeroSearch } from '../components/HeroSearch.js';
+import { CenterSection } from '../components/CenterSection.js';
+import { HikesNearYouList } from '../components/HikesNearYouList.js';
+import { FeaturedHikes } from '../components/FeaturedHikes.js';
 import Map from './Map.js';
-import LowerMainPageContent from '../components/LowerMainPageContent.js';
-import GearReviews from '../components/GearReviews.js';
-import MainPageArticles from '../components/MainPageArticles.js';
-import Footer from '../components/Footer.js';
+import { LowerMainPageContent } from '../components/LowerMainPageContent.js';
+import { GearReviews } from '../components/GearReviews.js';
+import { MainPageArticles } from '../components/MainPageArticles.js';
+import { Footer } from '../components/Footer.js';
 import { 
   displaySignUpModalAction,
   displayLogInModalAction,

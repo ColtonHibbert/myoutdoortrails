@@ -55,4 +55,3 @@ export const HikesNearYouList = ({trailsArray, reCenterMap }) => {
     )
 }
 
-export default HikesNearYouList;

@@ -66,4 +66,3 @@ export const Navigation = ({ displaySignUpModalAction, displayLogInModalAction, 
     )
 }
 
-export default Navigation;

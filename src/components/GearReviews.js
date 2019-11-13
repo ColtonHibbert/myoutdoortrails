@@ -8,4 +8,3 @@ export const GearReviews = () => {
     )
 }
 
-export default GearReviews;

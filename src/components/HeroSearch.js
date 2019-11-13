@@ -10,4 +10,4 @@ export const HeroSearch = (props) => {
     )
 }
 
-export default HeroSearch;
+
