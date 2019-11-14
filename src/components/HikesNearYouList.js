@@ -33,9 +33,10 @@ export const HikesNearYouList = ({trailsArray, reCenterMap }) => {
                     return (
                         <div 
                         className="vw-80 min-width-100 ma0 pa0 ba bg-white pointer"
+                        key={trailItem.name}
                         onClick={() => reCenterMap(trailItem)}
                         >
-                            <img className="pa0 vh-25 w-100" src={trailItem.imgSmallMed} alt="picture of trail"></img>
+                            <img className="pa0 vh-25 w-100" src={trailItem.imgSmallMed} alt="trail"></img>
                             <div className="h4 flex flex-column justify-between">
                                 <div className="flex">{trailItem.name}</div>
                                 <div className="f5">{difficulty}</div>

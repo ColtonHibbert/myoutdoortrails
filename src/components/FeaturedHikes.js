@@ -32,9 +32,9 @@ export const FeaturedHikes = ({featuredHikesArray }) => {
                         <div 
                             className="min-width-100 h-100 ma0 pa0 ba bg-white
                             w2-l"
-                            
+                            key={trailItem.name}
                         >
-                            <img className="pa0 vh-25 w-100" src={trailItem.imgSmallMed} alt="picture of trail"></img>
+                            <img className="pa0 vh-25 w-100" src={trailItem.imgSmallMed} alt="trail"></img>
                             <div className="h4 flex flex-column justify-between">
                                 <div className="flex">{trailItem.name}</div>
                                 <div className="f5">{difficulty}</div>

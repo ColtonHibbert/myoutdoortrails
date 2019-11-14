@@ -100,7 +100,7 @@ class App extends Component {
   }
 
   checkResponse() {
-    const mapboxdata = store.getState().forwardGeocodingResponse.features;
+    //const mapboxdata = store.getState().forwardGeocodingResponse.features;
     //console.log(mapboxdata);
   } 
 
