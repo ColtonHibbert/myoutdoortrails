@@ -81,9 +81,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 class App extends Component {
-  constructor() {
-    super();
-  }
   
   updateDimensions = debounce(() => {
       const minWidth = window.innerWidth;
@@ -104,7 +101,7 @@ class App extends Component {
 
   checkResponse() {
     const mapboxdata = store.getState().forwardGeocodingResponse.features;
-    console.log(mapboxdata);
+    //console.log(mapboxdata);
   } 
 
  

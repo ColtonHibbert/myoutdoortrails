@@ -8,8 +8,8 @@ export const SEARCHFIELDCOMPONENTSTYLES = {
 export const SearchFieldComponent = ({apiFunctions, submitSearchFieldAction, sendSearchFieldAction, buttonstyle, searchfieldstyle }) => {
     
     function onClickHandler(sendSearchFieldAction, apiFunctions) {
-    sendSearchFieldAction();
-    apiFunctions();
+        sendSearchFieldAction();
+        apiFunctions();
     }
           
     return (

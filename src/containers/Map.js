@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { store } from '../index.js';
+//import { store } from '../index.js';
 import mapboxgl from 'mapbox-gl';
 const publicMapBoxToken = "pk.eyJ1IjoiY29kaW5nd2l0aGNvbHRvbiIsImEiOiJjano0OXg5MzYwYzQyM2dtbDdvajRlMGg3In0.tIhLprKwtyrZ0EM2tG2J4w"
 mapboxgl.accessToken = publicMapBoxToken;
@@ -17,9 +17,6 @@ const mapDispatchToProps = {
 
 }
 class Map extends Component {
-    constructor() {
-        super();
-    }
    
     componentDidMount() {
         this.map = new mapboxgl.Map({
@@ -40,13 +37,13 @@ class Map extends Component {
             }
         })
         
-        console.log("should load map")
-        console.log(this.map)
+        //console.log("should load map")
+        //console.log(this.map)
         this.map.on('load', () =>  {
-            console.log('load just ran bro')
+            //console.log('load just ran bro')
             if(this.props.trailsArray[0]) {
                 this.fillFeaturesHikingListArr();
-                console.log(this.featuresHikingListArr)
+                //console.log(this.featuresHikingListArr)
                 const mapLayer = this.map.getLayer('points');
                 if(mapLayer !== undefined ) {
                     this.map.removeLayer('points');
@@ -96,10 +93,10 @@ class Map extends Component {
        
     componentDidUpdate() {
         this.map.setCenter([this.props.searchLongitude, this.props.searchLatitude]);
-        console.log("componentdidupdate on map")
+        //console.log("componentdidupdate on map")
         if(this.props.trailsArray[0]) {
             this.fillFeaturesHikingListArr();
-            console.log(this.featuresHikingListArr)
+            //console.log(this.featuresHikingListArr)
             const mapLayer = this.map.getLayer('points');
             if(mapLayer !== undefined ) {
                 this.map.removeLayer('points');

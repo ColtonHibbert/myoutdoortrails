@@ -126,7 +126,7 @@ export const sendSearchFieldAction = () => {
             searchField: store.getState().searchField
         })
     }).then(response => response.json())
-    .then(data => console.log(data))
+    //.then(data => console.log(data))
 }
 
 export const sendSignUpAction = () => {
@@ -169,10 +169,10 @@ export const sendLogIn = () => {
 }
 
 export const getTrails = () => {
-    console.log("start of getTrails")
+    //console.log("start of getTrails")
     const lat = `${store.getState().searchLatitude}`;
     const lon = `${store.getState().searchLongitude}`;
-    console.log(lat,lon)
+    //console.log(lat,lon)
     fetch('https://myoutdoortrailsnode.herokuapp.com/hikingproject', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
@@ -185,7 +185,7 @@ export const getTrails = () => {
     .then(data => {
         store.dispatch(getTrailsResponse(data))
     })
-    console.log("end of getTrails")
+    //console.log("end of getTrails")
     return
     // fetch(`https://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${lon}&maxDistance=50&key=${process.env.HPKEY}`)
     // .then(res => res.json())
@@ -205,7 +205,7 @@ export const getTrailsResponse = (data) => {
 }
 
 export const forwardGeocoding = () => {
-    console.log("start of forwardGeocoding")
+    //console.log("start of forwardGeocoding")
     if (store.getState().searchField) {
         const getSearchFieldURLValue = () => {
             const newValue = store.getState().searchField.replace(" ", "%20")
@@ -216,18 +216,18 @@ export const forwardGeocoding = () => {
         .then(res => res.json())
         .then( data => {
             store.dispatch(forwardGeocodingResponse(data))
-            console.log("below is the forwardGeocoding data")
-            console.log(data)
+            //console.log("below is the forwardGeocoding data")
+            //console.log(data)
         })
     }
-    console.log("end of forwardGeocoding")
+    //console.log("end of forwardGeocoding")
     return;
 }
 
 export const apiFunctions = () => {
     (async () => {
-        console.log("api function calls forwardGeocoding")
-        console.log("start of forwardGeocoding")
+        //console.log("api function calls forwardGeocoding")
+        //console.log("start of forwardGeocoding")
     if (store.getState().searchField) {
         const getSearchFieldURLValue = () => {
             const newValue = store.getState().searchField.replace(" ", "%20")
@@ -238,18 +238,16 @@ export const apiFunctions = () => {
         .then(res => res.json())
         .then( data => {
             store.dispatch(forwardGeocodingResponse(data))
-            console.log("below is the forwardGeocoding data")
-            console.log(data)
+            //console.log("below is the forwardGeocoding data")
+            //console.log(data)
         })
     }
-    console.log("end of forwardGeocoding")
-    console.log("api function calls getTrails")
-    console.log("start of getTrails")
+    //console.log("end of forwardGeocoding")
+    //console.log("api function calls getTrails")
+    //console.log("start of getTrails")
     const lat = `${store.getState().searchLatitude}`;
     const lon = `${store.getState().searchLongitude}`;
-    console.log(lat,lon)
-    // await fetch(`https://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${lon}&maxDistance=50&key=${process.env.HPKEY}`)
-    // .then(res => res.json())
+    //console.log(lat,lon)
     await fetch('https://myoutdoortrailsnode.herokuapp.com/hikingproject', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
@@ -262,7 +260,7 @@ export const apiFunctions = () => {
     .then(data => {
         store.dispatch(getTrailsResponse(data))
     })
-    console.log("end of getTrails")
+    //console.log("end of getTrails")
     })()
 }
 
