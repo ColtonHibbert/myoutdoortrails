@@ -99,10 +99,7 @@ class App extends Component {
     window.addEventListener("resize",this.updateDimensions)
   }
 
-  checkResponse() {
-    //const mapboxdata = store.getState().forwardGeocodingResponse.features;
-    //console.log(mapboxdata);
-  } 
+  
 
  
   render() {

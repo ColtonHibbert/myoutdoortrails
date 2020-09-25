@@ -18,8 +18,7 @@ import {
     GET_TRAILS_RESPONSE,
     RE_CENTER_MAP,
 } from './constants.js';
-const publicMapBoxToken = "pk.eyJ1IjoiY29kaW5nd2l0aGNvbHRvbiIsImEiOiJjano0OXg5MzYwYzQyM2dtbDdvajRlMGg3In0.tIhLprKwtyrZ0EM2tG2J4w"
-//import { HPKEY, MAPBOXKEY } from '../config/config.js';
+const publicMapBoxToken = "pk.eyJ1IjoiY29kaW5nd2l0aGNvbHRvbiIsImEiOiJjano0OXg5MzYwYzQyM2dtbDdvajRlMGg3In0.tIhLprKwtyrZ0EM2tG2J4w";
 
 
 
@@ -185,15 +184,7 @@ export const getTrails = () => {
     .then(data => {
         store.dispatch(getTrailsResponse(data))
     })
-    //console.log("end of getTrails")
     return
-    // fetch(`https://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${lon}&maxDistance=50&key=${process.env.HPKEY}`)
-    // .then(res => res.json())
-    // .then(data => {
-    //     store.dispatch(getTrailsResponse(data))
-    // })
-    // console.log("end of getTrails")
-    
 }
 
 export const getTrailsResponse = (data) => {
@@ -216,8 +207,7 @@ export const forwardGeocoding = () => {
         .then(res => res.json())
         .then( data => {
             store.dispatch(forwardGeocodingResponse(data))
-            //console.log("below is the forwardGeocoding data")
-            //console.log(data)
+            //console.log(data, "forwardGeocoding data")
         })
     }
     //console.log("end of forwardGeocoding")
@@ -226,8 +216,7 @@ export const forwardGeocoding = () => {
 
 export const apiFunctions = () => {
     (async () => {
-        //console.log("api function calls forwardGeocoding")
-        //console.log("start of forwardGeocoding")
+        //console.log("api function calls forwardGeocoding, start of forward GeoCoding")
     if (store.getState().searchField) {
         const getSearchFieldURLValue = () => {
             const newValue = store.getState().searchField.replace(" ", "%20")
@@ -238,8 +227,7 @@ export const apiFunctions = () => {
         .then(res => res.json())
         .then( data => {
             store.dispatch(forwardGeocodingResponse(data))
-            //console.log("below is the forwardGeocoding data")
-            //console.log(data)
+            //console.log(data, "forwardGeocoding data")
         })
     }
     //console.log("end of forwardGeocoding")
